@@ -308,7 +308,7 @@ class ReadWriteMemory:
         :return: A Process object containing the information from the requested Process.
         """
         if not process_name.endswith('.exe'):
-            self.process.name = process_name + '.exe'
+            process_name = process_name + '.exe'
 
         process_ids = self.enumerate_processes()
 

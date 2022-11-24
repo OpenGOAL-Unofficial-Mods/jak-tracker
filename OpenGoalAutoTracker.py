@@ -1,4 +1,4 @@
-from ReadWriteMemory import ReadWriteMemory
+from ReadWriteMemory import ReadWriteMemory, ReadWriteMemoryError
 
 DEBUG = False
 
@@ -71,7 +71,7 @@ class OpenGoalAutoTracker(object):
 
   def __init__(self):
     try:
-      self.process = ReadWriteMemory().get_process_by_name('gk.exe')
+      self.process = ReadWriteMemory().get_process_by_name('gk')
     except ReadWriteMemoryError as e:
       print(f'Error finding process gk.exe: {e}')
       exit(1)
