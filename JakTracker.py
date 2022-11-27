@@ -1,5 +1,6 @@
 from OpenGoalAutoTracker import OpenGoalAutoTracker
 from PIL import Image 
+import io
 import time
 import PySimpleGUI as PSG
 
@@ -14,6 +15,7 @@ LAYOUT = [
     # 'res_jungle_fishgame',
     # 'res_snow_eggtop',
   ],
+  'HSeparator',
   [ # Geyser Rock
     'res_training_gimmie',
     'res_training_door',
@@ -37,6 +39,115 @@ LAYOUT = [
     'res_beach_gimmie',
     'res_beach_sentinel',
     'res_beach_buzzer',
+  ],
+  [ # Forbidden Jungle
+    'res_jungle_lurkerm', # mirrors
+    'res_jungle_tower',
+    'res_jungle_eggtop',  # blue eco switch
+    'res_jungle_plant',
+    'res_jungle_fishgame',
+    'res_jungle_canyon_end',
+    'res_jungle_temple_door',
+    'res_jungle_buzzer',
+  ],
+  [ # Misty Island
+    'res_misty_muse',
+    'res_misty_boat', # top of lurker ship
+    'res_misty_cannon',
+    'res_misty_warehouse', # return to dark eco pool
+    'res_misty_bike', # flying lurkers
+    'res_misty_bike_jump',  # zoomer jump
+    'res_misty_eco_challenge',  # boosted
+    'res_misty_buzzer',
+  ],
+  [ # Fire Canyon
+    'res_firecanyon_end',
+    'res_firecanyon_buzzer',
+  ],
+  [ # Rock Village
+    'res_village2_gambler_money',
+    'res_village2_geologist_money',
+    'res_village2_warrior_money',
+    'res_village2_oracle_money1',
+    'res_village2_oracle_money2',
+    'res_village2_buzzer',
+  ],
+  [ # Lost Precusor City
+    'res_sunken_room',  # raise the chamber
+    'res_sunken_pipe',  # pipegame
+    'res_sunken_slide', # bottom of LPC
+    'res_sunken_sharks',  # quickly cross dangerous pool (next to button skip)
+    'res_sunken_platforms', # puzzle
+    'res_sunken_top_of_helix',  # climb from bottom (piggyback)
+    'res_sunken_spinning_room', # center of the complex (above dark eco)
+    'res_sunken_buzzer',
+  ],
+  [ # Boggy Swamp
+    'res_swamp_flutflut',
+    'res_swamp_billy',
+    'res_swamp_battle',
+    'res_swamp_tether_4', # yep this is the order in start menu >_<
+    'res_swamp_tether_1',
+    'res_swamp_tether_2',
+    'res_swamp_tether_3',
+    'res_swamp_buzzer',
+  ],
+  [ # Precursor Basin
+    'res_rolling_moles',
+    'res_rolling_robbers',
+    'res_rolling_race',
+    'res_rolling_lake',
+    'res_rolling_plants',
+    'res_rolling_ring_chase_1',
+    'res_rolling_ring_chase_2',
+    'res_rolling_buzzer',
+  ],
+  [ # Mountain Pass
+    'res_ogre_boss',  # klaww
+    'res_ogre_end',
+    'res_ogre_secret',  # backwards cell / stalag hops / tree hops / boulder skip
+    'res_ogre_buzzer',
+  ],
+  [ # Volcanic Crater
+    'res_village3_miner_money1',
+    'res_village3_miner_money2',
+    'res_village3_miner_money3',
+    'res_village3_miner_money4',
+    'res_village3_oracle_money1',
+    'res_village3_oracle_money2',
+    'res_village3_extra1',  # secret cell (from spider cave)
+    'res_village3_buzzer',
+  ],
+  [ # Snowy Mountain
+    'res_snow_eggtop',  # yellow eco switch
+    'res_snow_ram', # lurker troops
+    'res_snow_bumpers', # blockers
+    'res_snow_cage',  # frozen crate (yellow eco/flutflut)
+    'res_snow_fort',  # inside fortress
+    'res_snow_ball',  # open fortress gate
+    'res_snow_bunnies',
+    'res_snow_buzzer',
+  ],
+  [ # Spider Cave
+    'res_cave_gnawers',
+    'res_cave_dark_crystals',
+    'res_cave_dark_climb',
+    'res_cave_robot_climb',
+    'res_cave_swing_poles',
+    'res_cave_spider_tunnel',
+    'res_cave_platforms', # quad jump
+    'res_cave_buzzer',
+  ],
+  [ # Lava Tube
+    'res_lavatube_end',
+    'res_lavatube_buzzer',
+  ],
+  [ # Citadel
+    'res_citadel_sage_blue',
+    'res_citadel_sage_red',
+    'res_citadel_sage_yellow',
+    'res_citadel_sage_green',
+    'res_citadel_buzzer',
   ]
 ]
 
@@ -104,7 +215,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_training_gimmie.png',
     ],
     'offset': (offset_tmp:=offset_tmp+200), # 424
     'length': 1,
@@ -113,7 +224,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_training_door.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -122,7 +233,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_training_climb.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -131,7 +242,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      '7flies_cell.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -140,7 +251,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_jungle_eggtop.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -149,7 +260,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_jungle_lurkerm.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -158,7 +269,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_jungle_tower.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -167,7 +278,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_jungle_fish.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -176,7 +287,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_jungle_plant.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -185,7 +296,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      '7flies_cell.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -194,7 +305,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_jungle_canyon_end.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -203,7 +314,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_jungle_temple_door.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -212,7 +323,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_village1_yakow.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -221,7 +332,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_village1_mayor_money.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -230,7 +341,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_village1_uncle_money.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -239,7 +350,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'oracle.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -248,7 +359,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'oracle.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -257,7 +368,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      '7flies_cell.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -266,7 +377,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_beach_ecorocks.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -275,7 +386,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_beach_pelican.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -284,7 +395,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_beach_flutflut.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -293,7 +404,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_beach_seagull.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -311,7 +422,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      '7flies_cell.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -383,7 +494,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      '7flies_cell.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -437,7 +548,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'oracle.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -446,7 +557,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'oracle.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -455,7 +566,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      '7flies_cell.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -527,7 +638,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      '7flies_cell.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -587,7 +698,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      '7flies_cell.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -659,7 +770,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      '7flies_cell.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -731,7 +842,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      '7flies_cell.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -764,7 +875,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      '7flies_cell.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -818,7 +929,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      '7flies_cell.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -836,7 +947,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      '7flies_cell.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -881,7 +992,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'oracle.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -890,7 +1001,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'oracle.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -962,7 +1073,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      '7flies_cell.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -989,7 +1100,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      '7flies_cell.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -1016,7 +1127,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      '7flies_cell.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -1053,6 +1164,15 @@ FIELDS = {
   }
 }
 
+# takes in a PIL.Image and returns the raw bytes for use in PySimpleGui
+def PilImageToBytesAlpha(img, alpha: int):
+  img2 = img.copy()
+  img2.putalpha(alpha)
+  img.paste(img2, img)
+  img_byte_arr = io.BytesIO()
+  img.save(img_byte_arr, format='PNG')
+  return img_byte_arr.getvalue()
+
 # reduce fields we lookup to those shown in layout
 FIELDS_REDUCED = {}
 for key in FIELDS:
@@ -1068,39 +1188,45 @@ OGAT = OpenGoalAutoTracker()
 PSG_LAYOUT = []
 for row in LAYOUT:
   psg_row = []
-  for element in row:
-    if element == 'blank':
-      psg_row.append(PSG.Image(size=(64,64)))
-    elif element in FIELDS:
-      field_info = FIELDS[element]
-      if field_info['icon_type'] == 'cell':
-        psg_row.append(PSG.Image(source='icons/blank.png', subsample=2, key=element))
-      elif field_info['icon_type'] == 'counter':
-        tmp_col = []
-        tmp_col.append([PSG.Image(source='icons/' + field_info['icons'][0], subsample=2, key=element)])
-        tmp_col.append([PSG.Text('0', key=element+'_counter')])
-        psg_row.append(PSG.Column(tmp_col))
-    else:
-      print(f'ERROR: invalid layout config for {element}')
+  if row == "HSeparator":
+    psg_row.append(PSG.HSeparator())
+  else:  
+    for element in row:
+      if element == 'blank':
+        psg_row.append(PSG.Image(size=(64,64)))
+      elif element in FIELDS:
+        field_info = FIELDS[element]
+        if field_info['icon_type'] == 'cell':
+          # show icon for this cell
+          img = Image.open('icons/' + field_info['icons'][0]).convert('RGBA')
+          psg_row.append(PSG.Image(source=PilImageToBytesAlpha(img, 63), key=element))
+        elif field_info['icon_type'] == 'counter':
+          psg_row.append(PSG.Image(source='icons/' + field_info['icons'][0], key=element))
+          psg_row.append(PSG.Text('0', size=(4,1), key=element+'_counter'))
+      else:
+        print(f'ERROR: invalid layout config for {element}')
   PSG_LAYOUT.append(psg_row)
 
-WINDOW = PSG.Window('OpenGOAL Tracker', PSG_LAYOUT, finalize=True)
+WINDOW = PSG.Window('OpenGOAL Tracker', PSG_LAYOUT, font=('Arial', 36), finalize=True)
+WINDOW.refresh()
 
 # display/refresh loop
 while True:
   WINDOW.refresh()
-  time.sleep(1) # refresh once per sec
+  time.sleep(0.1) # refresh 10x per sec
+  # continue
   values = OGAT.read_field_values(FIELDS_REDUCED)
   for key in values:
     if key in FIELDS_REDUCED:
       field_info = FIELDS_REDUCED[key]
       if field_info['icon_type'] == 'cell':
-        # show/hide icon for this cell
-        if values[key] == 1:
-          WINDOW[key].update(source='icons/' + field_info['icons'][0], subsample=2)
+        # show icon for this cell
+        img = Image.open('icons/' + field_info['icons'][0]).convert('RGBA')
+        if values[key] == 0:
+          # use low opacity if not collected
+          WINDOW[key].update(source=PilImageToBytesAlpha(img, 47))
         else:
-          WINDOW[key].update(source='icons/blank.png', subsample=2)
-
+          WINDOW[key].update(source=PilImageToBytesAlpha(img, 255))
       elif field_info['icon_type'] == 'counter':
         # update counter value
         WINDOW[key+'_counter'].update(values[key])
