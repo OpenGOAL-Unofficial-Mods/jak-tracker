@@ -413,7 +413,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_beach_cannon.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -431,7 +431,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_beach_gimmie.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -440,7 +440,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_beach_sentinel.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -449,7 +449,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_misty_muse.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -458,7 +458,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_misty_boat.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -467,7 +467,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_misty_warehouse.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -476,7 +476,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_beach_cannon.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -485,7 +485,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_misty_bike.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -503,7 +503,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_misty_bike_jump.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -512,7 +512,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_misty_eco_challenge.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -521,7 +521,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_village2_gambler_money.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -530,7 +530,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_village2_geologist_money.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -539,7 +539,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_village2_warrior_money.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -575,7 +575,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_swamp_billy.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -584,7 +584,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_swamp_flutflut.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -593,7 +593,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_swamp_battle.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -602,7 +602,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_swamp_tether_1.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -611,7 +611,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_swamp_tether_2.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -620,7 +620,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_swamp_tether_3.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -629,7 +629,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_swamp_tether_4.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
