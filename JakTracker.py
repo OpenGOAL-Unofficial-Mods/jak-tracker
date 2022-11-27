@@ -653,7 +653,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_sunken_platforms.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -662,7 +662,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_sunken_pipe.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -671,7 +671,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_sunken_slide.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -680,7 +680,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_sunken_room.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -689,7 +689,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_sunken_sharks.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -707,7 +707,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_sunken_top_of_helix.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -716,7 +716,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_sunken_spinning_room.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -725,7 +725,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_rolling_race.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -734,7 +734,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_rolling_robbers.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -743,7 +743,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_rolling_moles.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -752,7 +752,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_rolling_plants.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -761,7 +761,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_rolling_lake.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -779,7 +779,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_rolling_ring_chase_1.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -788,7 +788,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_rolling_ring_chase_2.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
