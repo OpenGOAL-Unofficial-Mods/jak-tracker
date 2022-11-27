@@ -350,7 +350,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'oracle.png',
+      'res_village1_oracle_money1.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -359,7 +359,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'oracle.png',
+      'res_village1_oracle_money2.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -476,7 +476,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'res_beach_cannon.png',
+      'res_misty_cannon.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -548,7 +548,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'oracle.png',
+      'res_village2_oracle_money1.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -557,7 +557,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'oracle.png',
+      'res_village2_oracle_money2.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -893,7 +893,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_citadel_sage_green.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -902,7 +902,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_citadel_sage_blue.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -911,7 +911,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_citadel_sage_red.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -920,7 +920,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_citadel_sage_yellow.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -938,7 +938,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_village3_extra1.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -956,7 +956,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_village3_miner_money1.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -965,7 +965,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_village3_miner_money2.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -974,7 +974,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_village3_miner_money3.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -983,7 +983,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_village3_miner_money4.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -992,7 +992,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'oracle.png',
+      'res_village3_oracle_money1.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -1001,7 +1001,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'oracle.png',
+      'res_village3_oracle_money2.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -1010,7 +1010,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_cave_gnawers.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -1019,7 +1019,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_cave_dark_crystals.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -1028,7 +1028,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_cave_dark_climb.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -1037,7 +1037,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_cave_robot_climb.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -1046,7 +1046,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_cave_swing_poles.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -1055,7 +1055,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_cave_spider_tunnel.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -1064,7 +1064,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_cave_platforms.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -1082,7 +1082,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_ogre_boss.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -1091,7 +1091,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_ogre_end.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -1109,7 +1109,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_ogre_secret.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -1118,7 +1118,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_lavatube_end.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -1193,21 +1193,21 @@ for row in LAYOUT:
   else:  
     for element in row:
       if element == 'blank':
-        psg_row.append(PSG.Image(size=(64,64)))
+        psg_row.append(PSG.Image(size=(64,64), background_color="black"))
       elif element in FIELDS:
         field_info = FIELDS[element]
         if field_info['icon_type'] == 'cell':
           # show icon for this cell
           img = Image.open('icons/' + field_info['icons'][0]).convert('RGBA')
-          psg_row.append(PSG.Image(source=PilImageToBytesAlpha(img, 63), key=element))
+          psg_row.append(PSG.Image(source=PilImageToBytesAlpha(img, 63), background_color="black", key=element))
         elif field_info['icon_type'] == 'counter':
-          psg_row.append(PSG.Image(source='icons/' + field_info['icons'][0], key=element))
-          psg_row.append(PSG.Text('0', size=(4,1), key=element+'_counter'))
+          psg_row.append(PSG.Image(source='icons/' + field_info['icons'][0], background_color="black", key=element))
+          psg_row.append(PSG.Text('0', size=(4,1), background_color="black", key=element+'_counter'))
       else:
         print(f'ERROR: invalid layout config for {element}')
   PSG_LAYOUT.append(psg_row)
 
-WINDOW = PSG.Window('OpenGOAL Tracker', PSG_LAYOUT, font=('Arial', 36), finalize=True)
+WINDOW = PSG.Window('OpenGOAL Tracker', PSG_LAYOUT, font=('Arial', 36), background_color="black", finalize=True)
 WINDOW.refresh()
 
 # display/refresh loop
@@ -1224,7 +1224,7 @@ while True:
         img = Image.open('icons/' + field_info['icons'][0]).convert('RGBA')
         if values[key] == 0:
           # use low opacity if not collected
-          WINDOW[key].update(source=PilImageToBytesAlpha(img, 47))
+          WINDOW[key].update(source=PilImageToBytesAlpha(img, 63))
         else:
           WINDOW[key].update(source=PilImageToBytesAlpha(img, 255))
       elif field_info['icon_type'] == 'counter':
