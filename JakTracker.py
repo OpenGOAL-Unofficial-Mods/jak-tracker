@@ -797,7 +797,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_snow_eggtop.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -806,7 +806,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_snow_ram.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -815,7 +815,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_snow_fort.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -824,7 +824,7 @@ FIELDS = {
     'display': 'OPEN THE LURKER FORT GATE',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_snow_ball.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -833,7 +833,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_snow_bunnies.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -851,7 +851,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_snow_bumpers.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -860,7 +860,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_snow_cage.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
@@ -884,7 +884,7 @@ FIELDS = {
     'display': '',
     'icon_type': 'cell',
     'icons': [
-      'cell_counter.png',
+      'res_firecanyon_end.png',
     ],
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
