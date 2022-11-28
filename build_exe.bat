@@ -1,6 +1,6 @@
 
 set mypath=%~dp0
-pyinstaller --onefile JakTracker.py --icon appicon.ico 
+pyinstaller --noconsole --onefile JakTracker.py --icon appicon.ico
 move "%mypath%dist\JakTracker.exe" "%mypath%/"
 RENAME "%mypath%\JakTracker.exe" "JakTracker.exe"
 @RD /S /Q "%mypath%/build"

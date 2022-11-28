@@ -1116,7 +1116,7 @@ while True:
         # this might still fail, will catch in next loop iteration
         OGAT.find_markers(True)
       else:
-        exit(0)
+        break
     case 'connected':
       # connected but still looking for marker address, keep waiting
       WindowToggleLoading(WINDOW, True)
@@ -1128,7 +1128,7 @@ while True:
         # this might still fail, will catch in next loop iteration
         OGAT.find_markers(True)
       else:
-        exit(0)
+        break
     case 'marker':
       # yay we can proceed
       WindowToggleLoading(WINDOW, False)
