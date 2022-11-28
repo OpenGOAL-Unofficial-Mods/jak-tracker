@@ -10,3 +10,5 @@ Piggybacking on the work done to support LiveSplit autosplitter, this program wi
   - **Colors/sizing/etc** are defined in `prefs.yaml`
   - **Custom icons** can be used - just replace the corresponding PNG file(s) in the `icons` subfolder
   - *Both of the above YAML files and the entire `icons` subfolder should live in the same folder as `JakTracker.exe`*
+
+Download the latest release `JakTracker.zip` from [here](https://github.com/OpenGOAL-Unofficial-Mods/jak-tracker/releases/latest)
