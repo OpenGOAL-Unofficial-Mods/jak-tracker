@@ -1,3 +1,7 @@
+# this file defines the UI layout
+#   - two hyphens starts a new row (except for HSeparator special case)
+#   - you can remove/reorder elements as you'd like, but the names CANNOT be changed (some have comments to help clarify what's what)
+
 # totals row
 - - num_power_cells
   - num_orbs

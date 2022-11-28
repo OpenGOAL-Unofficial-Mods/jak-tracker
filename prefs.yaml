@@ -1,3 +1,5 @@
+# this file defines some preferences for how to render the UI
+
 # background and text colors - these accept either '#RRGGBB' format or a color name 'white'
 bg_color: '#000000'
 text_color: 'white'
