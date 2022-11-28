@@ -1092,7 +1092,7 @@ for row in LAYOUT:
           psg_row.append(PSG.Text('0', size=(4,1), background_color=PREFS['bg_color'], font=(PREFS['counter_font_name'], PREFS['counter_font_size']), text_color=PREFS['counter_font_color'], key=element+'_counter'))
       elif element == 'completion_percent':
         # this is computed manually in tracker, so needs to be handled a bit differently
-        psg_row.append(PSG.Text('0.0%', size=(4,1), background_color=PREFS['bg_color'], font=(PREFS['counter_font_name'], PREFS['counter_font_size']), text_color=PREFS['counter_font_color'], key=element))
+        psg_row.append(PSG.Text('0.0%', size=(6,1), background_color=PREFS['bg_color'], font=(PREFS['counter_font_name'], PREFS['counter_font_size']), text_color=PREFS['counter_font_color'], key=element))
       elif element[0] == '$':
         # $ first character indicates a text label
         if 'label_fixed_width' in PREFS:
