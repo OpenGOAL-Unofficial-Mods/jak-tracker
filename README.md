@@ -9,8 +9,8 @@ Piggybacking on the work done to support LiveSplit autosplitter, this program wi
 - The program may load for ~10 seconds on startup, as it takes some time to scan through OpenGOAL memory
 - Tracker UI Customization!
   - **Icon layout** is defined in `layout.yaml`:
-    https://github.com/OpenGOAL-Unofficial-Mods/jak-tracker/blob/9eb61a0eb2fac0d9a3eaee9f8de220146480f125/layout.yaml#L5-L22
+    https://github.com/OpenGOAL-Unofficial-Mods/jak-tracker/blob/74829b5afe97c552905888afed14c214dd4ed64d/layout.yaml#L6-L26
   - **Colors/sizing/etc** are defined in `prefs.yaml`
-    https://github.com/OpenGOAL-Unofficial-Mods/jak-tracker/blob/ce740918c70e920f618d532990a29f70d570a5db/prefs.yaml#L3-L15
+    https://github.com/OpenGOAL-Unofficial-Mods/jak-tracker/blob/74829b5afe97c552905888afed14c214dd4ed64d/prefs.yaml#L3-L21
   - **Custom icons** can be used - just replace the corresponding PNG file(s) in the `icons` subfolder
   - *Both of the above YAML files and the entire `icons` subfolder should live in the same folder as `JakTracker.exe`*
