@@ -1,6 +1,6 @@
 # background and text colors - these accept either '#RRGGBB' format or a color name 'white'
 bg_color: '#000000'
-text_color: 'yellow'
+text_color: 'white'
 
 # font name/size
 font_name: Arial

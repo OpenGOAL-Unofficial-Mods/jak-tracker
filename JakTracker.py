@@ -1092,7 +1092,7 @@ for row in LAYOUT:
   tmp_rows.append(psg_row)
 PSG_LAYOUT.append([PSG.Column(tmp_rows, visible=False, background_color=PREFS['bg_color'], key='main')])
 
-WINDOW = PSG.Window('OpenGOAL Tracker', PSG_LAYOUT, font=(PREFS['font_name'], PREFS['font_size']), background_color=PREFS['bg_color'], finalize=True)
+WINDOW = PSG.Window('OpenGOAL Tracker', PSG_LAYOUT, icon='appicon.ico', font=(PREFS['font_name'], PREFS['font_size']), background_color=PREFS['bg_color'], finalize=True)
 WINDOW.refresh()
 
 OGAT = OpenGoalAutoTracker()
@@ -1111,7 +1111,7 @@ while True:
     case 'no_gk':
       # gk.exe not found, let user retry
       WindowToggleLoading(WINDOW, True)
-      ans = PSG.popup_yes_no('Couldn''t find OpenGOAL process (gk.exe)! Try again?', title='Info', text_color=PREFS['text_color'], background_color=PREFS['bg_color'], keep_on_top=True)
+      ans = PSG.popup_yes_no('Couldn''t find OpenGOAL process (gk.exe)! Try again?', icon='appicon.ico', title='Info', text_color=PREFS['text_color'], background_color=PREFS['bg_color'], keep_on_top=True)
       if ans == 'Yes':
         # this might still fail, will catch in next loop iteration
         OGAT.find_markers(True)
@@ -1123,7 +1123,7 @@ while True:
     case 'no_marker':
       # marker address not found, let user retry
       WindowToggleLoading(WINDOW, True)
-      ans = PSG.popup_yes_no('Couldn''t successfully read OpenGOAL memory! Try again?', title='Info', text_color=PREFS['text_color'], background_color=PREFS['bg_color'], keep_on_top=True)
+      ans = PSG.popup_yes_no('Couldn''t successfully read OpenGOAL memory! Try again?', icon='appicon.ico', title='Info', text_color=PREFS['text_color'], background_color=PREFS['bg_color'], keep_on_top=True)
       if ans == 'Yes':
         # this might still fail, will catch in next loop iteration
         OGAT.find_markers(True)
