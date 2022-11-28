@@ -82,7 +82,7 @@ class OpenGoalAutoTracker(object):
       self.status = 'marker'
 
       # The address of the GOAL struct is stored in a u64 next to the marker!
-      # 20 bytes for "UnLiStEdStRaTs_JaK1 " | 4 bytes padding | 8 bytes (u64) for GOAL struct address
+      # 20 bytes for 'UnLiStEdStRaTs_JaK1 ' | 4 bytes padding | 8 bytes (u64) for GOAL struct address
       #   so GOAL struct address is 24 = 0x18 bytes from base_ptr
       goal_struct_addr_ptr = tmp_marker_addr + 24
       self.goal_struct_addr = int.from_bytes(self.process.readByte(goal_struct_addr_ptr, 8), byteorder='little', signed=False)
@@ -109,13 +109,19 @@ class OpenGoalAutoTracker(object):
       field_values = {}
       
       for key in fields:
-        if fields[key]["field_type"] == "skip":
+        if fields[key]['field_type'] == 'skip':
           continue
 
-        field_values[key] = int.from_bytes(self.process.readByte(self.goal_struct_addr + fields[key]["offset"], fields[key]["length"]), byteorder='little', signed=False)
+        field_values[key] = int.from_bytes(self.process.readByte(self.goal_struct_addr + fields[key]['offset'], fields[key]['length']), byteorder='little', signed=False)
 
       # if DEBUG:
       #   print(f'field_values: {field_values}')
+
+      # calculate completion_percent if all necessary fields are found
+      if 'num_power_cells' in field_values and 'num_orbs' in field_values and 'num_scout_flies' in field_values:
+        field_values['completion_percent'] = (80.0 * field_values['num_power_cells'] / 101.0) \
+          + (10.0 * field_values['num_orbs'] / 2000.0) \
+          + (10.0 * field_values['num_scout_flies'] / 112.0)
 
       self.process.close()
 

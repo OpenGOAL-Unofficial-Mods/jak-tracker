@@ -1049,9 +1049,12 @@ with open('layout.yaml', 'r') as layout_yaml:
 # parse PREFS from yaml file
 PREF = {
   'bg_color': '#000000',
-  'text_color': 'white',
-  'font_name': 'Arial',
-  'font_size': 36,
+  'label_font_color': 'white',
+  'label_font_name': 'Arial',
+  'label_font_size': 16,
+  'counter_font_color': 'white',
+  'counter_font_name': 'Arial',
+  'counter_font_size': 36,
   'icon_shrink_factor': 1,
   'uncollected_transparency': 47
 }
@@ -1068,7 +1071,7 @@ for key in FIELDS:
 
 # setup window
 PSG_LAYOUT = [
-  [PSG.Text('Loading...', visible=True, key='loading', background_color=PREFS['bg_color'], text_color=PREFS['text_color'])]
+  [PSG.Text('Loading...', visible=True, key='loading', background_color=PREFS['bg_color'], font=(PREFS['counter_font_name'], PREFS['counter_font_size']), text_color=PREFS['counter_font_color'])]
 ]
 tmp_rows = []
 for row in LAYOUT:
@@ -1086,13 +1089,24 @@ for row in LAYOUT:
         elif field_info['field_type'] == 'counter':
           # show icon and counter
           psg_row.append(PSG.Image(source='icons/' + field_info['icons'][0], background_color=PREFS['bg_color'], subsample=PREFS['icon_shrink_factor'], key=element))
-          psg_row.append(PSG.Text('0', size=(4,1), background_color=PREFS['bg_color'], text_color=PREFS['text_color'], key=element+'_counter'))
+          psg_row.append(PSG.Text('0', size=(4,1), background_color=PREFS['bg_color'], font=(PREFS['counter_font_name'], PREFS['counter_font_size']), text_color=PREFS['counter_font_color'], key=element+'_counter'))
+      elif element == 'completion_percent':
+        # this is computed manually in tracker, so needs to be handled a bit differently
+        psg_row.append(PSG.Text('0.0%', size=(4,1), background_color=PREFS['bg_color'], font=(PREFS['counter_font_name'], PREFS['counter_font_size']), text_color=PREFS['counter_font_color'], key=element))
+      elif element[0] == '$':
+        # $ first character indicates a text label
+        if 'label_fixed_width' in PREFS:
+          # fixed width
+          psg_row.append(PSG.Text(element[1:], size=(PREFS['label_fixed_width'],1), background_color=PREFS['bg_color'], font=(PREFS['label_font_name'], PREFS['label_font_size']), text_color=PREFS['label_font_color'], key=element))
+        else:
+          # dynamic width
+          psg_row.append(PSG.Text(element[1:], background_color=PREFS['bg_color'], font=(PREFS['label_font_name'], PREFS['label_font_size']), text_color=PREFS['label_font_color'], key=element))
       else:
         print(f'ERROR: invalid layout config for {element}')
   tmp_rows.append(psg_row)
 PSG_LAYOUT.append([PSG.Column(tmp_rows, visible=False, background_color=PREFS['bg_color'], key='main')])
 
-WINDOW = PSG.Window('OpenGOAL Tracker', PSG_LAYOUT, icon='appicon.ico', font=(PREFS['font_name'], PREFS['font_size']), background_color=PREFS['bg_color'], finalize=True)
+WINDOW = PSG.Window('OpenGOAL Tracker', PSG_LAYOUT, icon='appicon.ico', background_color=PREFS['bg_color'], finalize=True)
 WINDOW.refresh()
 
 OGAT = OpenGoalAutoTracker()
@@ -1111,7 +1125,7 @@ while True:
     case 'no_gk':
       # gk.exe not found, let user retry
       WindowToggleLoading(WINDOW, True)
-      ans = PSG.popup_yes_no('Couldn''t find OpenGOAL process (gk.exe)! Try again?', icon='appicon.ico', title='Info', text_color=PREFS['text_color'], background_color=PREFS['bg_color'], keep_on_top=True)
+      ans = PSG.popup_yes_no('Couldn''t find OpenGOAL process (gk.exe)! Try again?', icon='appicon.ico', title='Info', text_color=PREFS['label_font_color'], background_color=PREFS['bg_color'], keep_on_top=True)
       if ans == 'Yes':
         # this might still fail, will catch in next loop iteration
         OGAT.find_markers(True)
@@ -1123,7 +1137,7 @@ while True:
     case 'no_marker':
       # marker address not found, let user retry
       WindowToggleLoading(WINDOW, True)
-      ans = PSG.popup_yes_no('Couldn''t successfully read OpenGOAL memory! Try again?', icon='appicon.ico', title='Info', text_color=PREFS['text_color'], background_color=PREFS['bg_color'], keep_on_top=True)
+      ans = PSG.popup_yes_no('Couldn''t successfully read OpenGOAL memory! Try again?', icon='appicon.ico', title='Info', text_color=PREFS['label_font_color'], background_color=PREFS['bg_color'], keep_on_top=True)
       if ans == 'Yes':
         # this might still fail, will catch in next loop iteration
         OGAT.find_markers(True)
@@ -1151,5 +1165,8 @@ while True:
               WINDOW[key+'_counter'].update(values[key])
             else:
               print(f'ERROR: unrecognized value returned from autotracker {key}')
+          elif key == 'completion_percent':
+            # this is computed manually in tracker, so needs to be handled a bit differently
+            WINDOW[key].update(f'{values[key]:0.1f}%')
 
 WINDOW.close()
