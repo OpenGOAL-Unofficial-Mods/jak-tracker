@@ -1,0 +1,5 @@
+pyinstaller=5.3
+Pillow=9.2.0
+python-dotenv=0.20.0
+ahk=0.14.1
+asyncio=3.4.3
