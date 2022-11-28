@@ -7,7 +7,7 @@ bg_color: '#000000'
 label_font_color: 'white'
 label_font_name: Arial
 label_font_size: 12
-# label_fixed_width: 10 # fixed width for text labels (~num of characters) - comment out for dynamic width
+label_fixed_width: 10 # fixed width for text labels (~num of characters) - comment out for dynamic width
 
 # font settings for orb/cell/fly counters
 counter_font_color: 'white'
