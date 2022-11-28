@@ -1,16 +1,16 @@
 from OpenGoalAutoTracker import OpenGoalAutoTracker
-from PIL import Image 
+from PIL import Image
+import yaml
 import io
 import time
 import PySimpleGUI as PSG
-from layout import LAYOUT
 
 # config for fields to query
 offset_tmp = 0
 FIELDS = {
   'num_power_cells': {
     'display': 'POWER CELLS',
-    'icon_type': 'counter',
+    'field_type': 'counter',
     'icons': [
       'cell_counter.png',
     ],
@@ -19,7 +19,7 @@ FIELDS = {
   },
   'num_orbs': {
     'display': 'PRECURSOR ORBS (TOTAL)',
-    'icon_type': 'counter',
+    'field_type': 'counter',
     'icons': [
       'orb_counter.png',
     ],
@@ -28,7 +28,7 @@ FIELDS = {
   },
   'num_scout_flies': {
     'display': 'SCOUT FLIES (TOTAL)',
-    'icon_type': 'counter',
+    'field_type': 'counter',
     'icons': [
       'fly_counter.png',
     ],
@@ -37,37 +37,37 @@ FIELDS = {
   },
   'padding_stats': {
     'display': 'padding_stats',
-    'icon_type': 'skip',
+    'field_type': 'skip',
     'offset': (offset_tmp:=offset_tmp+4),
     'length': 200,
   },
   'game_hash': {
     'display': 'game_hash',
-    'icon_type': 'skip',
+    'field_type': 'skip',
     'offset': (offset_tmp:=offset_tmp+200), # 212
     'length': 4,
   },
   'in_cutscene': {
     'display': 'in_cutscene',
-    'icon_type': 'skip',
+    'field_type': 'skip',
     'offset': (offset_tmp:=offset_tmp+4),
     'length': 4,
   },
   'is_loading': {
     'display': 'is_loading',
-    'icon_type': 'skip',
+    'field_type': 'skip',
     'offset': (offset_tmp:=offset_tmp+4),
     'length': 4,
   },
   'padding_controls': {
     'display': 'padding_controls',
-    'icon_type': 'skip',
+    'field_type': 'skip',
     'offset': (offset_tmp:=offset_tmp+4),
     'length': 200,
   },
   'res_training_gimmie': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_training_gimmie.png',
     ],
@@ -76,7 +76,7 @@ FIELDS = {
   },
   'res_training_door': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_training_door.png',
     ],
@@ -85,7 +85,7 @@ FIELDS = {
   },
   'res_training_climb': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_training_climb.png',
     ],
@@ -94,7 +94,7 @@ FIELDS = {
   },
   'res_training_buzzer': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_training_buzzer.png',
     ],
@@ -103,7 +103,7 @@ FIELDS = {
   },
   'res_jungle_eggtop': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_jungle_eggtop.png',
     ],
@@ -112,7 +112,7 @@ FIELDS = {
   },
   'res_jungle_lurkerm': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_jungle_lurkerm.png',
     ],
@@ -121,7 +121,7 @@ FIELDS = {
   },
   'res_jungle_tower': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_jungle_tower.png',
     ],
@@ -130,7 +130,7 @@ FIELDS = {
   },
   'res_jungle_fishgame': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_jungle_fish.png',
     ],
@@ -139,7 +139,7 @@ FIELDS = {
   },
   'res_jungle_plant': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_jungle_plant.png',
     ],
@@ -148,7 +148,7 @@ FIELDS = {
   },
   'res_jungle_buzzer': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_jungle_buzzer.png',
     ],
@@ -157,7 +157,7 @@ FIELDS = {
   },
   'res_jungle_canyon_end': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_jungle_canyon_end.png',
     ],
@@ -166,7 +166,7 @@ FIELDS = {
   },
   'res_jungle_temple_door': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_jungle_temple_door.png',
     ],
@@ -175,7 +175,7 @@ FIELDS = {
   },
   'res_village1_yakow': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village1_yakow.png',
     ],
@@ -184,7 +184,7 @@ FIELDS = {
   },
   'res_village1_mayor_money': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village1_mayor_money.png',
     ],
@@ -193,7 +193,7 @@ FIELDS = {
   },
   'res_village1_uncle_money': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village1_uncle_money.png',
     ],
@@ -202,7 +202,7 @@ FIELDS = {
   },
   'res_village1_oracle_money1': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village1_oracle_money1.png',
     ],
@@ -211,7 +211,7 @@ FIELDS = {
   },
   'res_village1_oracle_money2': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village1_oracle_money2.png',
     ],
@@ -220,7 +220,7 @@ FIELDS = {
   },
   'res_village1_buzzer': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village1_buzzer.png',
     ],
@@ -229,7 +229,7 @@ FIELDS = {
   },
   'res_beach_ecorocks': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_beach_ecorocks.png',
     ],
@@ -238,7 +238,7 @@ FIELDS = {
   },
   'res_beach_pelican': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_beach_pelican.png',
     ],
@@ -247,7 +247,7 @@ FIELDS = {
   },
   'res_beach_flutflut': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_beach_flutflut.png',
     ],
@@ -256,7 +256,7 @@ FIELDS = {
   },
   'res_beach_seagull': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_beach_seagull.png',
     ],
@@ -265,7 +265,7 @@ FIELDS = {
   },
   'res_beach_cannon': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_beach_cannon.png',
     ],
@@ -274,7 +274,7 @@ FIELDS = {
   },
   'res_beach_buzzer': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_beach_buzzer.png',
     ],
@@ -283,7 +283,7 @@ FIELDS = {
   },
   'res_beach_gimmie': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_beach_gimmie.png',
     ],
@@ -292,7 +292,7 @@ FIELDS = {
   },
   'res_beach_sentinel': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_beach_sentinel.png',
     ],
@@ -301,7 +301,7 @@ FIELDS = {
   },
   'res_misty_muse': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_misty_muse.png',
     ],
@@ -310,7 +310,7 @@ FIELDS = {
   },
   'res_misty_boat': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_misty_boat.png',
     ],
@@ -319,7 +319,7 @@ FIELDS = {
   },
   'res_misty_warehouse': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_misty_warehouse.png',
     ],
@@ -328,7 +328,7 @@ FIELDS = {
   },
   'res_misty_cannon': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_misty_cannon.png',
     ],
@@ -337,7 +337,7 @@ FIELDS = {
   },
   'res_misty_bike': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_misty_bike.png',
     ],
@@ -346,7 +346,7 @@ FIELDS = {
   },
   'res_misty_buzzer': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_misty_buzzer.png',
     ],
@@ -355,7 +355,7 @@ FIELDS = {
   },
   'res_misty_bike_jump': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_misty_bike_jump.png',
     ],
@@ -364,7 +364,7 @@ FIELDS = {
   },
   'res_misty_eco_challenge': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_misty_eco_challenge.png',
     ],
@@ -373,7 +373,7 @@ FIELDS = {
   },
   'res_village2_gambler_money': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village2_gambler_money.png',
     ],
@@ -382,7 +382,7 @@ FIELDS = {
   },
   'res_village2_geologist_money': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village2_geologist_money.png',
     ],
@@ -391,7 +391,7 @@ FIELDS = {
   },
   'res_village2_warrior_money': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village2_warrior_money.png',
     ],
@@ -400,7 +400,7 @@ FIELDS = {
   },
   'res_village2_oracle_money1': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village2_oracle_money1.png',
     ],
@@ -409,7 +409,7 @@ FIELDS = {
   },
   'res_village2_oracle_money2': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village2_oracle_money2.png',
     ],
@@ -418,7 +418,7 @@ FIELDS = {
   },
   'res_village2_buzzer': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village2_buzzer.png',
     ],
@@ -427,7 +427,7 @@ FIELDS = {
   },
   'res_swamp_billy': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_swamp_billy.png',
     ],
@@ -436,7 +436,7 @@ FIELDS = {
   },
   'res_swamp_flutflut': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_swamp_flutflut.png',
     ],
@@ -445,7 +445,7 @@ FIELDS = {
   },
   'res_swamp_battle': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_swamp_battle.png',
     ],
@@ -454,7 +454,7 @@ FIELDS = {
   },
   'res_swamp_tether_1': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_swamp_tether_1.png',
     ],
@@ -463,7 +463,7 @@ FIELDS = {
   },
   'res_swamp_tether_2': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_swamp_tether_2.png',
     ],
@@ -472,7 +472,7 @@ FIELDS = {
   },
   'res_swamp_tether_3': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_swamp_tether_3.png',
     ],
@@ -481,7 +481,7 @@ FIELDS = {
   },
   'res_swamp_tether_4': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_swamp_tether_4.png',
     ],
@@ -490,7 +490,7 @@ FIELDS = {
   },
   'res_swamp_buzzer': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_swamp_buzzer.png',
     ],
@@ -499,13 +499,13 @@ FIELDS = {
   },
   'res_swamp_arm': {
     'display': 'GET TO THE CENTER OF THE SWAMP',  # ayo?
-    'icon_type': 'skip',
+    'field_type': 'skip',
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
   },
   'res_sunken_platforms': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_sunken_platforms.png',
     ],
@@ -514,7 +514,7 @@ FIELDS = {
   },
   'res_sunken_pipe': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_sunken_pipe.png',
     ],
@@ -523,7 +523,7 @@ FIELDS = {
   },
   'res_sunken_slide': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_sunken_slide.png',
     ],
@@ -532,7 +532,7 @@ FIELDS = {
   },
   'res_sunken_room': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_sunken_room.png',
     ],
@@ -541,7 +541,7 @@ FIELDS = {
   },
   'res_sunken_sharks': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_sunken_sharks.png',
     ],
@@ -550,7 +550,7 @@ FIELDS = {
   },
   'res_sunken_buzzer': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_sunken_buzzer.png',
     ],
@@ -559,7 +559,7 @@ FIELDS = {
   },
   'res_sunken_top_of_helix': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_sunken_top_of_helix.png',
     ],
@@ -568,7 +568,7 @@ FIELDS = {
   },
   'res_sunken_spinning_room': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_sunken_spinning_room.png',
     ],
@@ -577,7 +577,7 @@ FIELDS = {
   },
   'res_rolling_race': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_rolling_race.png',
     ],
@@ -586,7 +586,7 @@ FIELDS = {
   },
   'res_rolling_robbers': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_rolling_robbers.png',
     ],
@@ -595,7 +595,7 @@ FIELDS = {
   },
   'res_rolling_moles': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_rolling_moles.png',
     ],
@@ -604,7 +604,7 @@ FIELDS = {
   },
   'res_rolling_plants': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_rolling_plants.png',
     ],
@@ -613,7 +613,7 @@ FIELDS = {
   },
   'res_rolling_lake': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_rolling_lake.png',
     ],
@@ -622,7 +622,7 @@ FIELDS = {
   },
   'res_rolling_buzzer': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_rolling_buzzer.png',
     ],
@@ -631,7 +631,7 @@ FIELDS = {
   },
   'res_rolling_ring_chase_1': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_rolling_ring_chase_1.png',
     ],
@@ -640,7 +640,7 @@ FIELDS = {
   },
   'res_rolling_ring_chase_2': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_rolling_ring_chase_2.png',
     ],
@@ -649,7 +649,7 @@ FIELDS = {
   },
   'res_snow_eggtop': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_snow_eggtop.png',
     ],
@@ -658,7 +658,7 @@ FIELDS = {
   },
   'res_snow_ram': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_snow_ram.png',
     ],
@@ -667,7 +667,7 @@ FIELDS = {
   },
   'res_snow_fort': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_snow_fort.png',
     ],
@@ -676,7 +676,7 @@ FIELDS = {
   },
   'res_snow_ball': {
     'display': 'OPEN THE LURKER FORT GATE',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_snow_ball.png',
     ],
@@ -685,7 +685,7 @@ FIELDS = {
   },
   'res_snow_bunnies': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_snow_bunnies.png',
     ],
@@ -694,7 +694,7 @@ FIELDS = {
   },
   'res_snow_buzzer': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_snow_buzzer.png',
     ],
@@ -703,7 +703,7 @@ FIELDS = {
   },
   'res_snow_bumpers': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_snow_bumpers.png',
     ],
@@ -712,7 +712,7 @@ FIELDS = {
   },
   'res_snow_cage': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_snow_cage.png',
     ],
@@ -721,13 +721,13 @@ FIELDS = {
   },
   'res_red_eggtop': {
     'display': '',
-    'icon_type': 'skip',
+    'field_type': 'skip',
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
   },
   'res_firecanyon_buzzer': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_firecanyon_buzzer.png',
     ],
@@ -736,7 +736,7 @@ FIELDS = {
   },
   'res_firecanyon_end': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_firecanyon_end.png',
     ],
@@ -745,7 +745,7 @@ FIELDS = {
   },
   'res_citadel_sage_green': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_citadel_sage_green.png',
     ],
@@ -754,7 +754,7 @@ FIELDS = {
   },
   'res_citadel_sage_blue': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_citadel_sage_blue.png',
     ],
@@ -763,7 +763,7 @@ FIELDS = {
   },
   'res_citadel_sage_red': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_citadel_sage_red.png',
     ],
@@ -772,7 +772,7 @@ FIELDS = {
   },
   'res_citadel_sage_yellow': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_citadel_sage_yellow.png',
     ],
@@ -781,7 +781,7 @@ FIELDS = {
   },
   'res_citadel_buzzer': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_citadel_buzzer.png',
     ],
@@ -790,7 +790,7 @@ FIELDS = {
   },
   'res_village3_extra1': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village3_extra1.png',
     ],
@@ -799,7 +799,7 @@ FIELDS = {
   },
   'res_village3_buzzer': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village3_buzzer.png',
     ],
@@ -808,7 +808,7 @@ FIELDS = {
   },
   'res_village3_miner_money1': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village3_miner_money1.png',
     ],
@@ -817,7 +817,7 @@ FIELDS = {
   },
   'res_village3_miner_money2': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village3_miner_money2.png',
     ],
@@ -826,7 +826,7 @@ FIELDS = {
   },
   'res_village3_miner_money3': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village3_miner_money3.png',
     ],
@@ -835,7 +835,7 @@ FIELDS = {
   },
   'res_village3_miner_money4': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village3_miner_money4.png',
     ],
@@ -844,7 +844,7 @@ FIELDS = {
   },
   'res_village3_oracle_money1': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village3_oracle_money1.png',
     ],
@@ -853,7 +853,7 @@ FIELDS = {
   },
   'res_village3_oracle_money2': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_village3_oracle_money2.png',
     ],
@@ -862,7 +862,7 @@ FIELDS = {
   },
   'res_cave_gnawers': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_cave_gnawers.png',
     ],
@@ -871,7 +871,7 @@ FIELDS = {
   },
   'res_cave_dark_crystals': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_cave_dark_crystals.png',
     ],
@@ -880,7 +880,7 @@ FIELDS = {
   },
   'res_cave_dark_climb': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_cave_dark_climb.png',
     ],
@@ -889,7 +889,7 @@ FIELDS = {
   },
   'res_cave_robot_climb': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_cave_robot_climb.png',
     ],
@@ -898,7 +898,7 @@ FIELDS = {
   },
   'res_cave_swing_poles': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_cave_swing_poles.png',
     ],
@@ -907,7 +907,7 @@ FIELDS = {
   },
   'res_cave_spider_tunnel': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_cave_spider_tunnel.png',
     ],
@@ -916,7 +916,7 @@ FIELDS = {
   },
   'res_cave_platforms': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_cave_platforms.png',
     ],
@@ -925,7 +925,7 @@ FIELDS = {
   },
   'res_cave_buzzer': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_cave_buzzer.png',
     ],
@@ -934,7 +934,7 @@ FIELDS = {
   },
   'res_ogre_boss': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_ogre_boss.png',
     ],
@@ -943,7 +943,7 @@ FIELDS = {
   },
   'res_ogre_end': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_ogre_end.png',
     ],
@@ -952,7 +952,7 @@ FIELDS = {
   },
   'res_ogre_buzzer': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_ogre_buzzer.png',
     ],
@@ -961,7 +961,7 @@ FIELDS = {
   },
   'res_ogre_secret': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_ogre_secret.png',
     ],
@@ -970,7 +970,7 @@ FIELDS = {
   },
   'res_lavatube_end': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_lavatube_end.png',
     ],
@@ -979,7 +979,7 @@ FIELDS = {
   },
   'res_lavatube_buzzer': {
     'display': '',
-    'icon_type': 'cell',
+    'field_type': 'cell',
     'icons': [
       'res_lavatube_buzzer.png',
     ],
@@ -988,31 +988,31 @@ FIELDS = {
   },
   'res_lavatube_balls': {
     'display': '',
-    'icon_type': 'skip',
+    'field_type': 'skip',
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
   },
   'res_intro': {
     'display': '',
-    'icon_type': 'skip',
+    'field_type': 'skip',
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
   },
   'int_finalboss_movies': {
     'display': '',
-    'icon_type': 'skip',
+    'field_type': 'skip',
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
   },
   'unk_finalboss_movies': {
     'display': '',
-    'icon_type': 'skip',
+    'field_type': 'skip',
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
   },
   'int_jungle_fishgame': {
     'display': '',
-    'icon_type': 'skip',
+    'field_type': 'skip',
     'offset': (offset_tmp:=offset_tmp+1),
     'length': 1,
   }
@@ -1027,6 +1027,37 @@ def PilImageToBytesAlpha(img, alpha: int):
   img.save(img_byte_arr, format='PNG')
   return img_byte_arr.getvalue()
 
+def WindowToggleLoading(window, showLoading: bool):
+  if showLoading:
+    window['loading'].update(visible=True)
+    window['loading'].unhide_row()
+    window['main'].update(visible=False)
+    window['main'].hide_row()
+  else:
+    window['loading'].update(visible=False)
+    window['loading'].hide_row()
+    window['main'].update(visible=True)
+    window['main'].unhide_row()
+
+  window.refresh()
+
+# parse LAYOUT from yaml file
+LAYOUT = []
+with open('layout.yaml', 'r') as layout_yaml:
+  LAYOUT = yaml.load(layout_yaml, Loader=yaml.FullLoader)
+
+# parse PREFS from yaml file
+PREF = {
+  'bg_color': '#000000',
+  'text_color': 'white',
+  'font_name': 'Arial',
+  'font_size': 36,
+  'icon_shrink_factor': 1,
+  'uncollected_transparency': 47
+}
+with open('prefs.yaml', 'r') as prefs_yaml:
+  PREFS = yaml.load(prefs_yaml, Loader=yaml.FullLoader)
+
 # reduce fields we lookup to those shown in layout
 FIELDS_REDUCED = {}
 for key in FIELDS:
@@ -1035,54 +1066,90 @@ for key in FIELDS:
       FIELDS_REDUCED[key] = FIELDS[key]
       break
 
-# get the auto tracker started
-OGAT = OpenGoalAutoTracker()
-
 # setup window
-PSG_LAYOUT = []
+PSG_LAYOUT = [
+  [PSG.Text('Loading...', visible=True, key='loading', background_color=PREFS['bg_color'], text_color=PREFS['text_color'])]
+]
+tmp_rows = []
 for row in LAYOUT:
   psg_row = []
   if row == "HSeparator":
-    psg_row.append(PSG.HSeparator())
+    psg_row.append(PSG.HSeparator(key='HSeparator'))
   else:  
     for element in row:
-      if element == 'blank':
-        psg_row.append(PSG.Image(size=(64,64), background_color="black"))
-      elif element in FIELDS:
+      if element in FIELDS:
         field_info = FIELDS[element]
-        if field_info['icon_type'] == 'cell':
+        if field_info['field_type'] == 'cell':
           # show icon for this cell
           img = Image.open('icons/' + field_info['icons'][0]).convert('RGBA')
-          psg_row.append(PSG.Image(source=PilImageToBytesAlpha(img, 63), background_color="black", key=element))
-        elif field_info['icon_type'] == 'counter':
-          psg_row.append(PSG.Image(source='icons/' + field_info['icons'][0], background_color="black", key=element))
-          psg_row.append(PSG.Text('0', size=(4,1), background_color="black", key=element+'_counter'))
+          psg_row.append(PSG.Image(source=PilImageToBytesAlpha(img, PREFS['uncollected_transparency']), background_color=PREFS['bg_color'], subsample=PREFS['icon_shrink_factor'], key=element))
+        elif field_info['field_type'] == 'counter':
+          # show icon and counter
+          psg_row.append(PSG.Image(source='icons/' + field_info['icons'][0], background_color=PREFS['bg_color'], subsample=PREFS['icon_shrink_factor'], key=element))
+          psg_row.append(PSG.Text('0', size=(4,1), background_color=PREFS['bg_color'], text_color=PREFS['text_color'], key=element+'_counter'))
       else:
         print(f'ERROR: invalid layout config for {element}')
-  PSG_LAYOUT.append(psg_row)
+  tmp_rows.append(psg_row)
+PSG_LAYOUT.append([PSG.Column(tmp_rows, visible=False, background_color=PREFS['bg_color'], key='main')])
 
-WINDOW = PSG.Window('OpenGOAL Tracker', PSG_LAYOUT, font=('Arial', 36), background_color="black", finalize=True)
+WINDOW = PSG.Window('OpenGOAL Tracker', PSG_LAYOUT, font=(PREFS['font_name'], PREFS['font_size']), background_color=PREFS['bg_color'], finalize=True)
 WINDOW.refresh()
+
+OGAT = OpenGoalAutoTracker()
 
 # display/refresh loop
 while True:
-  WINDOW.refresh()
-  time.sleep(0.1) # refresh 10x per sec
-  # continue
-  values = OGAT.read_field_values(FIELDS_REDUCED)
-  for key in values:
-    if key in FIELDS_REDUCED:
-      field_info = FIELDS_REDUCED[key]
-      if field_info['icon_type'] == 'cell':
-        # show icon for this cell
-        img = Image.open('icons/' + field_info['icons'][0]).convert('RGBA')
-        if values[key] == 0:
-          # use low opacity if not collected
-          WINDOW[key].update(source=PilImageToBytesAlpha(img, 63))
-        else:
-          WINDOW[key].update(source=PilImageToBytesAlpha(img, 255))
-      elif field_info['icon_type'] == 'counter':
-        # update counter value
-        WINDOW[key+'_counter'].update(values[key])
+  event, values = WINDOW.read(timeout=100) # only refresh up to 10x per sec
+  if event == PSG.WIN_CLOSED:
+    break
+
+  match OGAT.status:
+    case 'wakeup':
+      # need to connect and find markers the first time
+      WindowToggleLoading(WINDOW, True)
+      OGAT.find_markers(True)
+    case 'no_gk':
+      # gk.exe not found, let user retry
+      WindowToggleLoading(WINDOW, True)
+      ans = PSG.popup_yes_no('Couldn''t find OpenGOAL process (gk.exe)! Try again?', title='Info', text_color=PREFS['text_color'], background_color=PREFS['bg_color'], keep_on_top=True)
+      if ans == 'Yes':
+        # this might still fail, will catch in next loop iteration
+        OGAT.find_markers(True)
       else:
-        print(f'ERROR: unrecognized value returned from autotracker {key}')
+        exit(0)
+    case 'connected':
+      # connected but still looking for marker address, keep waiting
+      WindowToggleLoading(WINDOW, True)
+    case 'no_marker':
+      # marker address not found, let user retry
+      WindowToggleLoading(WINDOW, True)
+      ans = PSG.popup_yes_no('Couldn''t successfully read OpenGOAL memory! Try again?', title='Info', text_color=PREFS['text_color'], background_color=PREFS['bg_color'], keep_on_top=True)
+      if ans == 'Yes':
+        # this might still fail, will catch in next loop iteration
+        OGAT.find_markers(True)
+      else:
+        exit(0)
+    case 'marker':
+      # yay we can proceed
+      WindowToggleLoading(WINDOW, False)
+
+      values = OGAT.read_field_values(FIELDS_REDUCED)
+      if values is not None:
+        for key in values:
+          if key in FIELDS_REDUCED:
+            field_info = FIELDS_REDUCED[key]
+            if field_info['field_type'] == 'cell':
+              # show icon for this cell
+              img = Image.open('icons/' + field_info['icons'][0]).convert('RGBA')
+              if values[key] == 0:
+                # use low opacity if not collected
+                WINDOW[key].update(source=PilImageToBytesAlpha(img, PREFS['uncollected_transparency']), subsample=PREFS['icon_shrink_factor'])
+              else:
+                WINDOW[key].update(source=PilImageToBytesAlpha(img, 255), subsample=PREFS['icon_shrink_factor'])
+            elif field_info['field_type'] == 'counter':
+              # update counter value
+              WINDOW[key+'_counter'].update(values[key])
+            else:
+              print(f'ERROR: unrecognized value returned from autotracker {key}')
+
+WINDOW.close()

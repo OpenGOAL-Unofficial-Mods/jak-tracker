@@ -1,0 +1,13 @@
+# background and text colors - these accept either '#RRGGBB' format or a color name 'white'
+bg_color: '#000000'
+text_color: 'yellow'
+
+# font name/size
+font_name: Arial
+font_size: 36
+
+# amount to shrink icons by 2=1/2, 3=1/3, etc (bigger number -> smaller icon)
+icon_shrink_factor: 1
+
+# transparency of icons when cell has not been collected (0 = invisible, 255 = fully opaque)
+uncollected_transparency: 47
