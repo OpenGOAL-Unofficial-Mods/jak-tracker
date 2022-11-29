@@ -1,5 +1,13 @@
 # this file defines the autosplitter/autotracker fields and their offsets
 # compare to https://github.com/open-goal/jak-project/blob/master/goal_src/jak1/pc/features/autosplit-h.gc
+#
+# display - currently unused
+# field_type - [counter/skip/cell] controls how the field is read/displayed
+# icons - path to icon image to use (only supports 1 currently)
+# length - number of bytes in autosplitter struct for this field
+# name - unique name of the field
+# offset - offset to address of this field from start of struct
+
 - display: POWER CELLS
   field_type: counter
   icons:
