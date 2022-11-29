@@ -1,5 +1,7 @@
 # this file defines some preferences for how to render the UI
 
+default_layout: 'hundo.yaml'
+
 # background color - these accept either '#RRGGBB' format or a color name 'white'
 bg_color: '#000000'
 
@@ -7,7 +9,7 @@ bg_color: '#000000'
 label_font_color: 'white'
 label_font_name: Arial
 label_font_size: 12
-label_fixed_width: 10 # fixed width for text labels (~num of characters) - comment out for dynamic width
+label_fixed_width: 13 # fixed width for text labels (~num of characters) - comment out for dynamic width
 
 # font settings for orb/cell/fly counters
 counter_font_color: 'white'

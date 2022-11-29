@@ -1,0 +1,790 @@
+# this file defines the autosplitter/autotracker fields and their offsets
+# compare to https://github.com/open-goal/jak-project/blob/master/goal_src/jak1/pc/features/autosplit-h.gc
+- display: POWER CELLS
+  field_type: counter
+  icons:
+  - cell_counter.png
+  length: 4
+  name: num_power_cells
+  offset: 0
+- display: PRECURSOR ORBS (TOTAL)
+  field_type: counter
+  icons:
+  - orb_counter.png
+  length: 4
+  name: num_orbs
+  offset: 4
+- display: SCOUT FLIES (TOTAL)
+  field_type: counter
+  icons:
+  - fly_counter.png
+  length: 4
+  name: num_scout_flies
+  offset: 8
+- display: padding_stats
+  field_type: skip
+  length: 200
+  name: padding_stats
+  offset: 12
+- display: game_hash
+  field_type: skip
+  length: 4
+  name: game_hash
+  offset: 212
+- display: in_cutscene
+  field_type: skip
+  length: 4
+  name: in_cutscene
+  offset: 216
+- display: is_loading
+  field_type: skip
+  length: 4
+  name: is_loading
+  offset: 220
+- display: padding_controls
+  field_type: skip
+  length: 200
+  name: padding_controls
+  offset: 224
+- display: ''
+  field_type: cell
+  icons:
+  - res_training_gimmie.png
+  length: 1
+  name: res_training_gimmie
+  offset: 424
+- display: ''
+  field_type: cell
+  icons:
+  - res_training_door.png
+  length: 1
+  name: res_training_door
+  offset: 425
+- display: ''
+  field_type: cell
+  icons:
+  - res_training_climb.png
+  length: 1
+  name: res_training_climb
+  offset: 426
+- display: ''
+  field_type: cell
+  icons:
+  - res_training_buzzer.png
+  length: 1
+  name: res_training_buzzer
+  offset: 427
+- display: ''
+  field_type: cell
+  icons:
+  - res_jungle_eggtop.png
+  length: 1
+  name: res_jungle_eggtop
+  offset: 428
+- display: ''
+  field_type: cell
+  icons:
+  - res_jungle_lurkerm.png
+  length: 1
+  name: res_jungle_lurkerm
+  offset: 429
+- display: ''
+  field_type: cell
+  icons:
+  - res_jungle_tower.png
+  length: 1
+  name: res_jungle_tower
+  offset: 430
+- display: ''
+  field_type: cell
+  icons:
+  - res_jungle_fish.png
+  length: 1
+  name: res_jungle_fishgame
+  offset: 431
+- display: ''
+  field_type: cell
+  icons:
+  - res_jungle_plant.png
+  length: 1
+  name: res_jungle_plant
+  offset: 432
+- display: ''
+  field_type: cell
+  icons:
+  - res_jungle_buzzer.png
+  length: 1
+  name: res_jungle_buzzer
+  offset: 433
+- display: ''
+  field_type: cell
+  icons:
+  - res_jungle_canyon_end.png
+  length: 1
+  name: res_jungle_canyon_end
+  offset: 434
+- display: ''
+  field_type: cell
+  icons:
+  - res_jungle_temple_door.png
+  length: 1
+  name: res_jungle_temple_door
+  offset: 435
+- display: ''
+  field_type: cell
+  icons:
+  - res_village1_yakow.png
+  length: 1
+  name: res_village1_yakow
+  offset: 436
+- display: ''
+  field_type: cell
+  icons:
+  - res_village1_mayor_money.png
+  length: 1
+  name: res_village1_mayor_money
+  offset: 437
+- display: ''
+  field_type: cell
+  icons:
+  - res_village1_uncle_money.png
+  length: 1
+  name: res_village1_uncle_money
+  offset: 438
+- display: ''
+  field_type: cell
+  icons:
+  - res_village1_oracle_money1.png
+  length: 1
+  name: res_village1_oracle_money1
+  offset: 439
+- display: ''
+  field_type: cell
+  icons:
+  - res_village1_oracle_money2.png
+  length: 1
+  name: res_village1_oracle_money2
+  offset: 440
+- display: ''
+  field_type: cell
+  icons:
+  - res_village1_buzzer.png
+  length: 1
+  name: res_village1_buzzer
+  offset: 441
+- display: ''
+  field_type: cell
+  icons:
+  - res_beach_ecorocks.png
+  length: 1
+  name: res_beach_ecorocks
+  offset: 442
+- display: ''
+  field_type: cell
+  icons:
+  - res_beach_pelican.png
+  length: 1
+  name: res_beach_pelican
+  offset: 443
+- display: ''
+  field_type: cell
+  icons:
+  - res_beach_flutflut.png
+  length: 1
+  name: res_beach_flutflut
+  offset: 444
+- display: ''
+  field_type: cell
+  icons:
+  - res_beach_seagull.png
+  length: 1
+  name: res_beach_seagull
+  offset: 445
+- display: ''
+  field_type: cell
+  icons:
+  - res_beach_cannon.png
+  length: 1
+  name: res_beach_cannon
+  offset: 446
+- display: ''
+  field_type: cell
+  icons:
+  - res_beach_buzzer.png
+  length: 1
+  name: res_beach_buzzer
+  offset: 447
+- display: ''
+  field_type: cell
+  icons:
+  - res_beach_gimmie.png
+  length: 1
+  name: res_beach_gimmie
+  offset: 448
+- display: ''
+  field_type: cell
+  icons:
+  - res_beach_sentinel.png
+  length: 1
+  name: res_beach_sentinel
+  offset: 449
+- display: ''
+  field_type: cell
+  icons:
+  - res_misty_muse.png
+  length: 1
+  name: res_misty_muse
+  offset: 450
+- display: ''
+  field_type: cell
+  icons:
+  - res_misty_boat.png
+  length: 1
+  name: res_misty_boat
+  offset: 451
+- display: ''
+  field_type: cell
+  icons:
+  - res_misty_warehouse.png
+  length: 1
+  name: res_misty_warehouse
+  offset: 452
+- display: ''
+  field_type: cell
+  icons:
+  - res_misty_cannon.png
+  length: 1
+  name: res_misty_cannon
+  offset: 453
+- display: ''
+  field_type: cell
+  icons:
+  - res_misty_bike.png
+  length: 1
+  name: res_misty_bike
+  offset: 454
+- display: ''
+  field_type: cell
+  icons:
+  - res_misty_buzzer.png
+  length: 1
+  name: res_misty_buzzer
+  offset: 455
+- display: ''
+  field_type: cell
+  icons:
+  - res_misty_bike_jump.png
+  length: 1
+  name: res_misty_bike_jump
+  offset: 456
+- display: ''
+  field_type: cell
+  icons:
+  - res_misty_eco_challenge.png
+  length: 1
+  name: res_misty_eco_challenge
+  offset: 457
+- display: ''
+  field_type: cell
+  icons:
+  - res_village2_gambler_money.png
+  length: 1
+  name: res_village2_gambler_money
+  offset: 458
+- display: ''
+  field_type: cell
+  icons:
+  - res_village2_geologist_money.png
+  length: 1
+  name: res_village2_geologist_money
+  offset: 459
+- display: ''
+  field_type: cell
+  icons:
+  - res_village2_warrior_money.png
+  length: 1
+  name: res_village2_warrior_money
+  offset: 460
+- display: ''
+  field_type: cell
+  icons:
+  - res_village2_oracle_money1.png
+  length: 1
+  name: res_village2_oracle_money1
+  offset: 461
+- display: ''
+  field_type: cell
+  icons:
+  - res_village2_oracle_money2.png
+  length: 1
+  name: res_village2_oracle_money2
+  offset: 462
+- display: ''
+  field_type: cell
+  icons:
+  - res_village2_buzzer.png
+  length: 1
+  name: res_village2_buzzer
+  offset: 463
+- display: ''
+  field_type: cell
+  icons:
+  - res_swamp_billy.png
+  length: 1
+  name: res_swamp_billy
+  offset: 464
+- display: ''
+  field_type: cell
+  icons:
+  - res_swamp_flutflut.png
+  length: 1
+  name: res_swamp_flutflut
+  offset: 465
+- display: ''
+  field_type: cell
+  icons:
+  - res_swamp_battle.png
+  length: 1
+  name: res_swamp_battle
+  offset: 466
+- display: ''
+  field_type: cell
+  icons:
+  - res_swamp_tether_1.png
+  length: 1
+  name: res_swamp_tether_1
+  offset: 467
+- display: ''
+  field_type: cell
+  icons:
+  - res_swamp_tether_2.png
+  length: 1
+  name: res_swamp_tether_2
+  offset: 468
+- display: ''
+  field_type: cell
+  icons:
+  - res_swamp_tether_3.png
+  length: 1
+  name: res_swamp_tether_3
+  offset: 469
+- display: ''
+  field_type: cell
+  icons:
+  - res_swamp_tether_4.png
+  length: 1
+  name: res_swamp_tether_4
+  offset: 470
+- display: ''
+  field_type: cell
+  icons:
+  - res_swamp_buzzer.png
+  length: 1
+  name: res_swamp_buzzer
+  offset: 471
+- display: GET TO THE CENTER OF THE SWAMP
+  field_type: skip
+  length: 1
+  name: res_swamp_arm
+  offset: 472
+- display: ''
+  field_type: cell
+  icons:
+  - res_sunken_platforms.png
+  length: 1
+  name: res_sunken_platforms
+  offset: 473
+- display: ''
+  field_type: cell
+  icons:
+  - res_sunken_pipe.png
+  length: 1
+  name: res_sunken_pipe
+  offset: 474
+- display: ''
+  field_type: cell
+  icons:
+  - res_sunken_slide.png
+  length: 1
+  name: res_sunken_slide
+  offset: 475
+- display: ''
+  field_type: cell
+  icons:
+  - res_sunken_room.png
+  length: 1
+  name: res_sunken_room
+  offset: 476
+- display: ''
+  field_type: cell
+  icons:
+  - res_sunken_sharks.png
+  length: 1
+  name: res_sunken_sharks
+  offset: 477
+- display: ''
+  field_type: cell
+  icons:
+  - res_sunken_buzzer.png
+  length: 1
+  name: res_sunken_buzzer
+  offset: 478
+- display: ''
+  field_type: cell
+  icons:
+  - res_sunken_top_of_helix.png
+  length: 1
+  name: res_sunken_top_of_helix
+  offset: 479
+- display: ''
+  field_type: cell
+  icons:
+  - res_sunken_spinning_room.png
+  length: 1
+  name: res_sunken_spinning_room
+  offset: 480
+- display: ''
+  field_type: cell
+  icons:
+  - res_rolling_race.png
+  length: 1
+  name: res_rolling_race
+  offset: 481
+- display: ''
+  field_type: cell
+  icons:
+  - res_rolling_robbers.png
+  length: 1
+  name: res_rolling_robbers
+  offset: 482
+- display: ''
+  field_type: cell
+  icons:
+  - res_rolling_moles.png
+  length: 1
+  name: res_rolling_moles
+  offset: 483
+- display: ''
+  field_type: cell
+  icons:
+  - res_rolling_plants.png
+  length: 1
+  name: res_rolling_plants
+  offset: 484
+- display: ''
+  field_type: cell
+  icons:
+  - res_rolling_lake.png
+  length: 1
+  name: res_rolling_lake
+  offset: 485
+- display: ''
+  field_type: cell
+  icons:
+  - res_rolling_buzzer.png
+  length: 1
+  name: res_rolling_buzzer
+  offset: 486
+- display: ''
+  field_type: cell
+  icons:
+  - res_rolling_ring_chase_1.png
+  length: 1
+  name: res_rolling_ring_chase_1
+  offset: 487
+- display: ''
+  field_type: cell
+  icons:
+  - res_rolling_ring_chase_2.png
+  length: 1
+  name: res_rolling_ring_chase_2
+  offset: 488
+- display: ''
+  field_type: cell
+  icons:
+  - res_snow_eggtop.png
+  length: 1
+  name: res_snow_eggtop
+  offset: 489
+- display: ''
+  field_type: cell
+  icons:
+  - res_snow_ram.png
+  length: 1
+  name: res_snow_ram
+  offset: 490
+- display: ''
+  field_type: cell
+  icons:
+  - res_snow_fort.png
+  length: 1
+  name: res_snow_fort
+  offset: 491
+- display: OPEN THE LURKER FORT GATE
+  field_type: cell
+  icons:
+  - res_snow_ball.png
+  length: 1
+  name: res_snow_ball
+  offset: 492
+- display: ''
+  field_type: cell
+  icons:
+  - res_snow_bunnies.png
+  length: 1
+  name: res_snow_bunnies
+  offset: 493
+- display: ''
+  field_type: cell
+  icons:
+  - res_snow_buzzer.png
+  length: 1
+  name: res_snow_buzzer
+  offset: 494
+- display: ''
+  field_type: cell
+  icons:
+  - res_snow_bumpers.png
+  length: 1
+  name: res_snow_bumpers
+  offset: 495
+- display: ''
+  field_type: cell
+  icons:
+  - res_snow_cage.png
+  length: 1
+  name: res_snow_cage
+  offset: 496
+- display: ''
+  field_type: skip
+  length: 1
+  name: res_red_eggtop
+  offset: 497
+- display: ''
+  field_type: cell
+  icons:
+  - res_firecanyon_buzzer.png
+  length: 1
+  name: res_firecanyon_buzzer
+  offset: 498
+- display: ''
+  field_type: cell
+  icons:
+  - res_firecanyon_end.png
+  length: 1
+  name: res_firecanyon_end
+  offset: 499
+- display: ''
+  field_type: cell
+  icons:
+  - res_citadel_sage_green.png
+  length: 1
+  name: res_citadel_sage_green
+  offset: 500
+- display: ''
+  field_type: cell
+  icons:
+  - res_citadel_sage_blue.png
+  length: 1
+  name: res_citadel_sage_blue
+  offset: 501
+- display: ''
+  field_type: cell
+  icons:
+  - res_citadel_sage_red.png
+  length: 1
+  name: res_citadel_sage_red
+  offset: 502
+- display: ''
+  field_type: cell
+  icons:
+  - res_citadel_sage_yellow.png
+  length: 1
+  name: res_citadel_sage_yellow
+  offset: 503
+- display: ''
+  field_type: cell
+  icons:
+  - res_citadel_buzzer.png
+  length: 1
+  name: res_citadel_buzzer
+  offset: 504
+- display: ''
+  field_type: cell
+  icons:
+  - res_village3_extra1.png
+  length: 1
+  name: res_village3_extra1
+  offset: 505
+- display: ''
+  field_type: cell
+  icons:
+  - res_village3_buzzer.png
+  length: 1
+  name: res_village3_buzzer
+  offset: 506
+- display: ''
+  field_type: cell
+  icons:
+  - res_village3_miner_money1.png
+  length: 1
+  name: res_village3_miner_money1
+  offset: 507
+- display: ''
+  field_type: cell
+  icons:
+  - res_village3_miner_money2.png
+  length: 1
+  name: res_village3_miner_money2
+  offset: 508
+- display: ''
+  field_type: cell
+  icons:
+  - res_village3_miner_money3.png
+  length: 1
+  name: res_village3_miner_money3
+  offset: 509
+- display: ''
+  field_type: cell
+  icons:
+  - res_village3_miner_money4.png
+  length: 1
+  name: res_village3_miner_money4
+  offset: 510
+- display: ''
+  field_type: cell
+  icons:
+  - res_village3_oracle_money1.png
+  length: 1
+  name: res_village3_oracle_money1
+  offset: 511
+- display: ''
+  field_type: cell
+  icons:
+  - res_village3_oracle_money2.png
+  length: 1
+  name: res_village3_oracle_money2
+  offset: 512
+- display: ''
+  field_type: cell
+  icons:
+  - res_cave_gnawers.png
+  length: 1
+  name: res_cave_gnawers
+  offset: 513
+- display: ''
+  field_type: cell
+  icons:
+  - res_cave_dark_crystals.png
+  length: 1
+  name: res_cave_dark_crystals
+  offset: 514
+- display: ''
+  field_type: cell
+  icons:
+  - res_cave_dark_climb.png
+  length: 1
+  name: res_cave_dark_climb
+  offset: 515
+- display: ''
+  field_type: cell
+  icons:
+  - res_cave_robot_climb.png
+  length: 1
+  name: res_cave_robot_climb
+  offset: 516
+- display: ''
+  field_type: cell
+  icons:
+  - res_cave_swing_poles.png
+  length: 1
+  name: res_cave_swing_poles
+  offset: 517
+- display: ''
+  field_type: cell
+  icons:
+  - res_cave_spider_tunnel.png
+  length: 1
+  name: res_cave_spider_tunnel
+  offset: 518
+- display: ''
+  field_type: cell
+  icons:
+  - res_cave_platforms.png
+  length: 1
+  name: res_cave_platforms
+  offset: 519
+- display: ''
+  field_type: cell
+  icons:
+  - res_cave_buzzer.png
+  length: 1
+  name: res_cave_buzzer
+  offset: 520
+- display: ''
+  field_type: cell
+  icons:
+  - res_ogre_boss.png
+  length: 1
+  name: res_ogre_boss
+  offset: 521
+- display: ''
+  field_type: cell
+  icons:
+  - res_ogre_end.png
+  length: 1
+  name: res_ogre_end
+  offset: 522
+- display: ''
+  field_type: cell
+  icons:
+  - res_ogre_buzzer.png
+  length: 1
+  name: res_ogre_buzzer
+  offset: 523
+- display: ''
+  field_type: cell
+  icons:
+  - res_ogre_secret.png
+  length: 1
+  name: res_ogre_secret
+  offset: 524
+- display: ''
+  field_type: cell
+  icons:
+  - res_lavatube_end.png
+  length: 1
+  name: res_lavatube_end
+  offset: 525
+- display: ''
+  field_type: cell
+  icons:
+  - res_lavatube_buzzer.png
+  length: 1
+  name: res_lavatube_buzzer
+  offset: 526
+- display: ''
+  field_type: skip
+  length: 1
+  name: res_lavatube_balls
+  offset: 527
+- display: ''
+  field_type: skip
+  length: 1
+  name: res_intro
+  offset: 528
+- display: ''
+  field_type: skip
+  length: 1
+  name: int_finalboss_movies
+  offset: 529
+- display: ''
+  field_type: skip
+  length: 1
+  name: unk_finalboss_movies
+  offset: 530
+- display: ''
+  field_type: skip
+  length: 1
+  name: int_jungle_fishgame
+  offset: 531
