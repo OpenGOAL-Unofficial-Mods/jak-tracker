@@ -1,0 +1,10 @@
+# this file defines the UI layout
+#   - two hyphens starts a new row (except for HSeparator special case, it takes up an entire row)
+#   - text labels must start with a $
+#   - field names cannot be changed (many have comments to help clarify)
+
+# totals row
+- - num_power_cells
+  - num_orbs
+  - num_scout_flies
+  - completion_percent
