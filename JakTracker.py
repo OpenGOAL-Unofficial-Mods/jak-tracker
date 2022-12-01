@@ -69,7 +69,7 @@ class JakTracker(object):
             if field_info['field_type'] == 'boolean':
               # show icon for this cell
               img = Image.open('icons/' + field_info['icons'][0]).convert('RGBA')
-              metadata = {'collected': False}
+              metadata = {'value': False}
               psg_row.append(PSG.Image(source=pil_to_bytes_with_alpha(img, self.prefs['uncollected_transparency']), background_color=self.prefs['bg_color'], subsample=self.prefs['icon_shrink_factor'], metadata=metadata, key=element, enable_events=(self.prefs['tracker_mode']=='manual')))
             elif field_info['field_type'] == 'counter':
               # show icon and counter
@@ -154,11 +154,11 @@ class JakTracker(object):
 
           if field_info['field_type'] == 'boolean':
             # toggle collected state
-            icon.metadata['collected'] = not icon.metadata['collected']
+            icon.metadata['value'] = not icon.metadata['value']
 
             # update icon for this boolean
             img = Image.open('icons/' + field_info['icons'][0]).convert('RGBA')
-            if icon.metadata['collected']:
+            if icon.metadata['value']:
               self.window[event].update(source=pil_to_bytes_with_alpha(img, 255), subsample=self.prefs['icon_shrink_factor'])
             else:
               # use low opacity if not collected
@@ -173,7 +173,7 @@ class JakTracker(object):
 
             # update counter value
             self.window[event+'_counter'].update(icon.metadata['count'])
-      
+
       if self.prefs['tracker_mode'] == 'auto' and self.autotracker is None:
         # connect autotracker
         self.autotracker = OpenGoalAutoTracker()
