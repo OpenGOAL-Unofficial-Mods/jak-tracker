@@ -109,19 +109,23 @@ class OpenGoalAutoTracker(object):
       field_values = {}
       
       for key in fields:
-        if fields[key]['field_type'] == 'skip':
+        if 'skip' in fields[key] and fields[key]['skip'] == True:
           continue
 
         field_values[key] = int.from_bytes(self.process.readByte(self.goal_struct_addr + fields[key]['offset'], fields[key]['length']), byteorder='little', signed=False)
 
-      # if DEBUG:
-      #   print(f'field_values: {field_values}')
+      if DEBUG:
+        print(f'field_values: {field_values}')
 
       # calculate completion_percent if all necessary fields are found
       if 'num_power_cells' in field_values and 'num_orbs' in field_values and 'num_scout_flies' in field_values:
-        field_values['completion_percent'] = (80.0 * field_values['num_power_cells'] / 101.0) \
+        pct = (80.0 * field_values['num_power_cells'] / 101.0) \
           + (10.0 * field_values['num_orbs'] / 2000.0) \
           + (10.0 * field_values['num_scout_flies'] / 112.0)
+        field_values['completion_percent'] = f'{pct:0.1f}%'
+        # make sure we only show 100.0% if it's actually 100% (lazy round down)
+        if field_values['completion_percent'] == f'{100:0.1f}%' and pct != 100.0:
+          field_values['completion_percent'] = f'{99.9:0.1f}%'
 
       self.process.close()
 

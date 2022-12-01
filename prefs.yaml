@@ -1,5 +1,9 @@
 # this file defines some preferences for how to render the UI
 
+# Either 'auto' (only updates via data read from gk.exe) or 'manual' (only updates via mouseclick)
+tracker_mode: auto
+
+# the layout to load on wakeup
 default_layout: 'hundo.yaml'
 
 # background color - these accept either '#RRGGBB' format or a color name 'white'
