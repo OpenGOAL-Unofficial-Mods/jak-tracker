@@ -123,6 +123,8 @@ class JakTracker(object):
 
     # display/refresh loop
     while True:
+      time.sleep(0.01)
+
       # handle any events
       event, values = self.window.read(timeout=100) # only refresh up to 10x per sec
       if event == PSG.WIN_CLOSED:
