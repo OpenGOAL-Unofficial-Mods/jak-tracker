@@ -3,6 +3,8 @@
 
 Download the latest release `JakTracker.zip` from [here](https://github.com/OpenGOAL-Unofficial-Mods/jak-tracker/releases/latest)
 
+⚠ MAKE SURE YOU HAVE SPEEDRUNNER MODE ENABLED ⚠
+
 Piggybacking on the work done to support LiveSplit autosplitter, this program will scan OpenGOAL memory and display which Power Cells you've collected in your current game. It also has a `manual` tracker mode which you could use for any game you want - you'd just need to setup a layout and corresponding icons.
 
 <img width="250" alt="image" src="https://user-images.githubusercontent.com/2515356/204374691-a52eb4fb-3111-4e38-a1f2-c9e50f346f3e.png">
