@@ -4,7 +4,7 @@ import yaml
 import os
 import io
 import time
-import PySimpleGUI as PSG
+import FreeSimpleGUI as PSG
 
 # takes in a PIL.Image and returns the raw bytes for use in PySimpleGui
 def pil_to_bytes_with_alpha(img, alpha: int):
@@ -161,7 +161,7 @@ class JakTracker(object):
             # update icon for this boolean
             img = Image.open('icons/' + field_info['icons'][0]).convert('RGBA')
             if icon.metadata['value']:
-              self.window[event].update(source=pil_to_bytes_with_alpha(img, 255), subsample=self.prefs['icon_shrink_factor'])
+              self.window[event].update(source=pil_to_bytes_with_alpha(img, self.prefs['collected_transparency']), subsample=self.prefs['icon_shrink_factor'])
             else:
               # use low opacity if not collected
               self.window[event].update(source=pil_to_bytes_with_alpha(img, self.prefs['uncollected_transparency']), subsample=self.prefs['icon_shrink_factor'])
@@ -227,7 +227,7 @@ class JakTracker(object):
                       # use low opacity if not collected
                       self.window[key].update(source=pil_to_bytes_with_alpha(img, self.prefs['uncollected_transparency']), subsample=self.prefs['icon_shrink_factor'])
                     else:
-                      self.window[key].update(source=pil_to_bytes_with_alpha(img, 255), subsample=self.prefs['icon_shrink_factor'])
+                      self.window[key].update(source=pil_to_bytes_with_alpha(img, self.prefs['collected_transparency']), subsample=self.prefs['icon_shrink_factor'])
                   elif field_info['field_type'] == 'counter':
                     # update counter value
                     self.window[key+'_counter'].update(values[key])

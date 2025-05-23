@@ -23,5 +23,6 @@ counter_font_size: 30
 # integer factor to shrink icons by 2=1/2, 3=1/3, etc (bigger number -> smaller icon)
 icon_shrink_factor: 1
 
-# transparency of icons when cell has not been collected (0 = invisible, 255 = fully opaque)
-uncollected_transparency: 47
+# transparency of icons when cell has/hasn't been collected (0 = invisible, 255 = fully opaque)
+collected_transparency: 15
+uncollected_transparency: 255
