@@ -55,7 +55,7 @@
   icons:
   - res_training_gimmie.png
   length: 1
-  offset: 424
+  offset: 424 # jak1_need_res_offset + 0 (from opengoal-jak1-autosplitter.asl)
 - name: res_training_door
   field_type: boolean
   icons:
@@ -680,7 +680,23 @@
   field_type: boolean
   length: 1
   offset: 530
-- name: int_jungle_fishgame
+- name: int_jungle_fishgame # talk to fisherman
   field_type: boolean
   length: 1
-  offset: 531
+  offset: 531 # jak1_need_res_offset + 107 (opengoal-jak1-autosplitter.asl)
+- name: com_jungle_lurkerm # connect FJ mirrors (not cell)
+  field_type: boolean
+  length: 1
+  offset: 532
+- name: com_misty_muse # catch muse (not cell)
+  field_type: boolean
+  length: 1
+  offset: 533
+- name: com_rolling_moles # herd moles (not cell)
+  field_type: boolean
+  length: 1
+  offset: 534
+- name: com_rolling_race # beat DMG (not cell)
+  field_type: boolean
+  length: 1
+  offset: 535

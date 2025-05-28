@@ -5,10 +5,10 @@
 
 # totals row
 - - blank
+  - blank
+  - blank
+  - blank
   - num_power_cells
-  - num_orbs
-  - num_scout_flies
-  - completion_percent
 # horizontal separator
 - HSeparator
 # Geyser Rock
@@ -150,7 +150,7 @@
   - res_citadel_sage_yellow
   - res_citadel_sage_green
   - res_citadel_buzzer
-  
+
 # Other splits you could use, you'll have to add your own icons for these though
 # - int_jungle_fishgame # talk to fisherman
 # - com_jungle_lurkerm # connect FJ mirrors (not cell)

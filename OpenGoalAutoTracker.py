@@ -7,10 +7,12 @@ MARKER_BYTES = b'UnLiStEdStRaTs_JaK1\x00'
 
 class OpenGoalAutoTracker(object):
 
-  def __init__(self):
+  def __init__(self, gk_offset):
     self.status = 'wakeup'
     self.process = None
     self.marker_addr = None
+    self.gk_offset = gk_offset
+    self.first_run = True
 
   def connect(self):
     try:
@@ -51,7 +53,11 @@ class OpenGoalAutoTracker(object):
         mem_start = modules[0]
         mem_end = modules[1]
 
-        tmp = mem_start
+        tmp = mem_start + self.gk_offset
+
+        if DEBUG or self.first_run:
+          print(f'starting search for marker from mem_start: {mem_start} + gk_offset: {self.gk_offset} = {tmp}')
+
         while tmp < mem_end:
           # save some time by checking only first byte initially
           first_byte = self.process.readByte(tmp, 1)
@@ -66,8 +72,8 @@ class OpenGoalAutoTracker(object):
               # also persist it for next time
               self.marker_addr = tmp
 
-              if DEBUG:
-                print(f'found marker at address: {tmp}')
+              if DEBUG or self.first_run:
+                print(f'found marker at address: {tmp}. offset from mem_start is: {tmp - mem_start}')
               break
           
           # start from next byte
@@ -86,8 +92,11 @@ class OpenGoalAutoTracker(object):
       #   so GOAL struct address is 24 = 0x18 bytes from base_ptr
       goal_struct_addr_ptr = tmp_marker_addr + 24
       self.goal_struct_addr = int.from_bytes(self.process.readByte(goal_struct_addr_ptr, 8), byteorder='little', signed=False)
-      if DEBUG:
+      if DEBUG or self.first_run:
         print(f'found goal_struct_addr as: {self.goal_struct_addr}')
+      
+      # less spam to console unless in DEBUG mode
+      self.first_run = False
 
       if close_process:
         self.process.close()

@@ -35,7 +35,7 @@ class JakTracker(object):
     with open('prefs.yaml', 'r') as prefs_yaml:
       self.prefs = yaml.load(prefs_yaml, Loader=yaml.FullLoader)
 
-    if filename == '' and self.layout is None:
+    if filename == '' and self.layout is None and 'default_layout' in self.prefs:
       # initial window build, use defaults (otherwise empty str -> reload current layout)
       filename = self.prefs['default_layout']
 
@@ -86,6 +86,10 @@ class JakTracker(object):
             else:
               # dynamic width
               psg_row.append(PSG.Text(element[1:], background_color=self.prefs['bg_color'], font=(self.prefs['label_font_name'], self.prefs['label_font_size']), text_color=self.prefs['label_font_color'], key=element))
+          elif element == "blank":
+              img = Image.open('icons/blank.png').convert('RGBA')
+              metadata = {'value': False}
+              psg_row.append(PSG.Image(source=pil_to_bytes_with_alpha(img, self.prefs['uncollected_transparency']), background_color=self.prefs['bg_color'], subsample=self.prefs['icon_shrink_factor'], metadata=metadata, key=element, enable_events=(self.prefs['tracker_mode']=='manual')))
           else:
             print(f'ERROR: invalid layout config for {element}')
       tmp_rows.append(psg_row)
@@ -177,8 +181,12 @@ class JakTracker(object):
             self.window[event+'_counter'].update(icon.metadata['count'])
 
       if self.prefs['tracker_mode'] == 'auto' and self.autotracker is None:
+        gk_offset = 0
+        if 'gk_offset' in self.prefs:
+          gk_offset = self.prefs['gk_offset']
+
         # connect autotracker
-        self.autotracker = OpenGoalAutoTracker()
+        self.autotracker = OpenGoalAutoTracker(gk_offset)
       elif self.prefs['tracker_mode'] == 'manual':
         # make sure loading panel is hidden
         self.window_toggle_loading(False)

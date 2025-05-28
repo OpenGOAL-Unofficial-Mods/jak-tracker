@@ -1,10 +1,15 @@
-# this file defines some preferences for how to render the UI
+# this file defines some preferences for how to connect to GK / render the UI
 
 # Either 'auto' (only updates via data read from gk.exe) or 'manual' (only updates via mouseclick)
 tracker_mode: auto
 
+# For OpenGOAL autotracking, will skip checking the first ~12MB of gk to save some startup time.
+# You can get the exact offset for instant startups if you run JakTracker from console and check the logs. It might change a
+# If you're having issues, loower this (worst case to 0), maybe gk layout was rearranged in an update.
+gk_offset: 12500000
+
 # the layout to load on wakeup
-default_layout: 'hundo.yaml'
+default_layout: 'rando.yaml'
 
 # background color - these accept either '#RRGGBB' format or a color name 'white'
 bg_color: '#000000'
@@ -20,7 +25,7 @@ counter_font_color: 'white'
 counter_font_name: Arial
 counter_font_size: 30
 
-# integer factor to shrink icons by 2=1/2, 3=1/3, etc (bigger number -> smaller icon)
+# integer factor to shrink icons by 2=1/2, 3=1/3, etc (bigger number -> smaller icon; dont blame me its the weird UI library's fault)
 icon_shrink_factor: 1
 
 # transparency of icons when cell has/hasn't been collected (0 = invisible, 255 = fully opaque)
