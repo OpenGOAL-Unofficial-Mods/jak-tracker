@@ -12,6 +12,7 @@ Piggybacking on the work done to support LiveSplit autosplitter, this program wi
 ### Notes
 - Windows/antivirus software may flag this program as a risk, we promise it is safe to run. This project is open source and you can audit the source code if you want to verify or run the python yourself - we simply use `pyinstaller` to package it up into an exe for easier distribution.
 - In `auto` tracker mode, the program may load for ~10 seconds on startup, as it takes some time to scan through OpenGOAL memory
+  - NEW: `prefs.yaml` has a `gk_offset` field to help speed this process up by skipping the first ~12MB of memory
 - In `manual` tracker mode:
   - You can click on `boolean` icons to toggle them on/off
   - You can click/shift+click on `counter` icons to increase/decrease their count
