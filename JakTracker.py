@@ -47,11 +47,18 @@ class JakTracker(object):
 
     # reduce fields we lookup to those shown in layout
     self.fields_reduced = {}
-    for key in self.fields:
-      for row in self.layout:
-        if key in row:
-          self.fields_reduced[key] = self.fields[key]
-          break
+    for row in self.layout:
+      if row == "HSeparator":
+        continue
+      
+      for element in row:
+        if isinstance(element,list):
+          for ee in element:
+            if ee in self.fields:
+              self.fields_reduced[ee] = self.fields[ee]
+        else:
+          if element in self.fields:
+            self.fields_reduced[element] = self.fields[element]
 
     # setup window
     tmp_layout = [
@@ -64,7 +71,16 @@ class JakTracker(object):
         psg_row.append(PSG.HSeparator(key='HSeparator'))
       else:  
         for element in row:
-          if element in self.fields:
+          if isinstance(element,list):
+            # multi-field icon display
+            metadata = {'values': element} # put list into metadata so we can hide/show siblings as needed
+            key = element[0]
+            field_info = self.fields[key]
+            # assume all field types are boolean here
+            # create icon for the first field in list for now
+            img = Image.open('icons/' + field_info['icons'][0]).convert('RGBA')
+            psg_row.append(PSG.Image(source=pil_to_bytes_with_alpha(img, self.prefs['uncollected_transparency']), background_color=self.prefs['bg_color'], subsample=self.prefs['icon_shrink_factor'], metadata=metadata, key=key, enable_events=(self.prefs['tracker_mode']=='manual')))
+          elif element in self.fields:
             field_info = self.fields[element]
             if field_info['field_type'] == 'boolean':
               # show icon for this cell
@@ -229,13 +245,35 @@ class JakTracker(object):
                 if key in self.fields_reduced:
                   field_info = self.fields_reduced[key]
                   if field_info['field_type'] == 'boolean':
-                    # show icon for this boolean
-                    img = Image.open('icons/' + field_info['icons'][0]).convert('RGBA')
-                    if values[key] == 0:
-                      # use low opacity if not collected
-                      self.window[key].update(source=pil_to_bytes_with_alpha(img, self.prefs['uncollected_transparency']), subsample=self.prefs['icon_shrink_factor'])
-                    else:
-                      self.window[key].update(source=pil_to_bytes_with_alpha(img, self.prefs['collected_transparency']), subsample=self.prefs['icon_shrink_factor'])
+                    if key in self.window.AllKeysDict:
+                      metadata = self.window[key].metadata
+                      if 'values' in metadata:
+                        # multi-field icon
+                        siblings = metadata['values']
+                        found = False
+                        for i, s in enumerate(siblings):
+                          if values[s] == 0:
+                            # first field not yet hit/collected, show the icon
+                            sf = self.fields_reduced[s]
+                            img = Image.open('icons/' + sf['icons'][0]).convert('RGBA')
+                            self.window[key].update(source=pil_to_bytes_with_alpha(img, self.prefs['uncollected_transparency']), subsample=self.prefs['icon_shrink_factor'])
+                            break
+                          else:
+                            # hit/collected
+                            if i == len(siblings)-1:
+                              # last field and everything else was collected, show with collected transparency
+                              sf = self.fields_reduced[s]
+                              img = Image.open('icons/' + sf['icons'][0]).convert('RGBA')
+                              self.window[key].update(source=pil_to_bytes_with_alpha(img, self.prefs['collected_transparency']), subsample=self.prefs['icon_shrink_factor'])
+                      else:
+                        # single-field icon
+                        # show icon for this boolean
+                        img = Image.open('icons/' + field_info['icons'][0]).convert('RGBA')
+                        if values[key] == 0:
+                          # use low opacity if not collected
+                          self.window[key].update(source=pil_to_bytes_with_alpha(img, self.prefs['uncollected_transparency']), subsample=self.prefs['icon_shrink_factor'])
+                        else:
+                          self.window[key].update(source=pil_to_bytes_with_alpha(img, self.prefs['collected_transparency']), subsample=self.prefs['icon_shrink_factor'])
                   elif field_info['field_type'] == 'counter':
                     # update counter value
                     self.window[key+'_counter'].update(values[key])

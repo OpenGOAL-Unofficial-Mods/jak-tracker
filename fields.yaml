@@ -686,17 +686,25 @@
   offset: 531 # jak1_need_res_offset + 107 (opengoal-jak1-autosplitter.asl)
 - name: com_jungle_lurkerm # connect FJ mirrors (not cell)
   field_type: boolean
+  icons:
+  - com_jungle_lurkerm.png
   length: 1
   offset: 532
 - name: com_misty_muse # catch muse (not cell)
   field_type: boolean
+  icons:
+  - com_misty_muse.png
   length: 1
   offset: 533
 - name: com_rolling_moles # herd moles (not cell)
   field_type: boolean
+  icons:
+  - com_rolling_moles.png
   length: 1
   offset: 534
 - name: com_rolling_race # beat DMG (not cell)
   field_type: boolean
+  icons:
+  - com_rolling_race.png
   length: 1
   offset: 535

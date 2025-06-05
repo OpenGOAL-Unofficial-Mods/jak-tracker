@@ -2,6 +2,10 @@
 #   - two hyphens starts a new row (except for HSeparator special case, it takes up an entire row)
 #   - text labels must start with a $
 #   - field names cannot be changed (many have comments to help clarify)
+#   - can use multiple fields in one spot with comma-separated []
+#       will show the icon for the first field in the list that hasn't split yet
+#       [com_misty_muse, res_misty_muse, com_misty_muse] 
+#       ^ I like to repeat the com_ one last for the icon without 1/2
 
 # totals row
 - - blank
@@ -37,7 +41,7 @@
   - res_beach_buzzer
 # Forbidden Jungle
 - - $FJ
-  - res_jungle_lurkerm        # mirrors
+  - [com_jungle_lurkerm, res_jungle_lurkerm, com_jungle_lurkerm]        # mirrors connected / cell collected
   - res_jungle_tower
   - res_jungle_eggtop         # blue eco switch
   - res_jungle_plant
@@ -47,7 +51,7 @@
   - res_jungle_buzzer
 # Misty Island
 - - $Misty
-  - res_misty_muse
+  - [com_misty_muse, res_misty_muse, com_misty_muse]  # catch muse / return muse
   - res_misty_boat            # top of lurker ship
   - res_misty_cannon
   - res_misty_warehouse       # return to dark eco pool
@@ -91,9 +95,9 @@
   - res_swamp_buzzer
 # Precursor Basin
 - - $Basin
-  - res_rolling_moles
+  - [com_rolling_moles, res_rolling_moles, com_rolling_moles]  # herd moles / collect cell
   - res_rolling_robbers
-  - res_rolling_race
+  - [com_rolling_race, res_rolling_race, com_rolling_race]  # beat DMG / collect cell
   - res_rolling_lake
   - res_rolling_plants
   - res_rolling_ring_chase_1
@@ -152,8 +156,4 @@
   - res_citadel_buzzer
 
 # Other splits you could use, you'll have to add your own icons for these though
-# - int_jungle_fishgame # talk to fisherman
-# - com_jungle_lurkerm # connect FJ mirrors (not cell)
-# - com_misty_muse # catch muse (not cell)
-# - com_rolling_moles # herd moles (not cell)
-# - com_rolling_race # beat DMG (not cell)
+# - int_jungle_fishgame # talk to fisherma

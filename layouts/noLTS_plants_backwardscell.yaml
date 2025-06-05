@@ -2,6 +2,10 @@
 #   - two hyphens starts a new row (except for HSeparator special case, it takes up an entire row)
 #   - text labels must start with a $
 #   - field names cannot be changed (many have comments to help clarify)
+#   - can use multiple fields in one spot with comma-separated []
+#       will show the icon for the first field in the list that hasn't split yet
+#       [com_misty_muse, res_misty_muse, com_misty_muse] 
+#       ^ I like to repeat the com_ one last for the icon without 1/2
 
 # totals row
 - - num_power_cells
@@ -26,6 +30,7 @@
   - res_jungle_buzzer
 # Misty Island/Sandover I
 - - $Misty/Sandover
+  - com_misty_muse
   - res_misty_cannon
   - res_misty_warehouse       # return to dark eco pool
   - res_misty_boat            # top of lurker ship
@@ -47,7 +52,7 @@
   - res_beach_gimmie
 # Sandover II/Fire Canyon
 - - $Sandover/FC
-  - res_misty_muse
+  - [com_misty_muse, res_misty_muse, com_misty_muse]  # catch muse / return muse
   - res_village1_buzzer
   - res_firecanyon_buzzer
   - res_firecanyon_end
