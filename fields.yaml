@@ -45,11 +45,15 @@
   field_type: unused
   length: 4
   offset: 220
+- name: current_level_id
+  field_type: current_level_id  # idk fuck it just do something special for this one
+  length: 1
+  offset: 224
 - name: padding_controls
   field_type: unused
   skip: true
   length: 200
-  offset: 224
+  offset: 225
 - name: res_training_gimmie
   field_type: boolean
   icons:
@@ -708,3 +712,21 @@
   - com_rolling_race.png
   length: 1
   offset: 535
+- name: hin_village2_levitator # blue sage warp gate button
+  field_type: boolean
+  icons:
+  - hin_village2_levitator.png
+  length: 1
+  offset: 536
+- name: hin_village3_button # red sage warp gate button
+  field_type: boolean
+  icons:
+  - hin_village3_button.png
+  length: 1
+  offset: 537
+- name: hin_village4_button # end of LT/yellow sage warp gate button
+  field_type: boolean
+  icons:
+  - hin_village4_button.png
+  length: 1
+  offset: 538

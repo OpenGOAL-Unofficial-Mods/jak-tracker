@@ -16,8 +16,9 @@ bg_color: '#000000'
 
 # font settings for custom text labels
 label_font_color: 'white'
+label_highlight_color: 'red'
 label_font_name: Arial
-label_font_size: 12
+label_font_size: 16
 label_fixed_width: 13 # fixed width for text labels (~num of characters) - comment out for dynamic width
 
 # font settings for orb/cell/fly counters

@@ -6,3 +6,4 @@ __pycache__/*
 icons/*.psd
 *.psd
 out/*
+*.zip

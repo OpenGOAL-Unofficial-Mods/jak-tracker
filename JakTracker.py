@@ -47,6 +47,8 @@ class JakTracker(object):
 
     # reduce fields we lookup to those shown in layout
     self.fields_reduced = {}
+    # always read this field, special case
+    self.fields_reduced["current_level_id"] = self.fields["current_level_id"]
     for row in self.layout:
       if row == "HSeparator":
         continue
@@ -96,12 +98,19 @@ class JakTracker(object):
               psg_row.append(PSG.Text('', size=(6,1), background_color=self.prefs['bg_color'], font=(self.prefs['counter_font_name'], self.prefs['counter_font_size']), text_color=self.prefs['counter_font_color'], key=element))
           elif element[0] == '$':
             # $ first character indicates a text label
+            label = element[1:]
+            metadata = {}
+            if '|' in element:
+              # we have level IDs to track for this label
+              label, level_ids_str = element[1:].split('|')
+              metadata['level_ids'] = level_ids_str.split(',')
+            
             if 'label_fixed_width' in self.prefs:
               # fixed width
-              psg_row.append(PSG.Text(element[1:], size=(self.prefs['label_fixed_width'],1), background_color=self.prefs['bg_color'], font=(self.prefs['label_font_name'], self.prefs['label_font_size']), text_color=self.prefs['label_font_color'], key=element))
+              psg_row.append(PSG.Text(label, size=(self.prefs['label_fixed_width'],1), background_color=self.prefs['bg_color'], font=(self.prefs['label_font_name'], self.prefs['label_font_size']), text_color=self.prefs['label_font_color'], key=label, metadata=metadata))
             else:
               # dynamic width
-              psg_row.append(PSG.Text(element[1:], background_color=self.prefs['bg_color'], font=(self.prefs['label_font_name'], self.prefs['label_font_size']), text_color=self.prefs['label_font_color'], key=element))
+              psg_row.append(PSG.Text(label, background_color=self.prefs['bg_color'], font=(self.prefs['label_font_name'], self.prefs['label_font_size']), text_color=self.prefs['label_font_color'], key=label, metadata=metadata))
           elif element == "blank":
               img = Image.open('icons/blank.png').convert('RGBA')
               metadata = {'value': False}
@@ -244,7 +253,21 @@ class JakTracker(object):
               for key in values:
                 if key in self.fields_reduced:
                   field_info = self.fields_reduced[key]
-                  if field_info['field_type'] == 'boolean':
+                  if field_info['field_type'] == 'current_level_id':
+                    # special case for active level
+                    active_level_id = values[key]
+                    # loop thru entire window and bold/unbold related text labels
+                    for w in self.window.AllKeysDict:
+                      o = self.window[w]
+                      if o.metadata is not None and 'level_ids' in o.metadata:
+                        # assume this is a text field we want to highlight
+                        if str(active_level_id) in o.metadata['level_ids']:
+                          # active level!
+                          o.update(text_color=self.prefs['label_highlight_color'])
+                        else:
+                          # inactive level!
+                          o.update(text_color=self.prefs['label_font_color'])
+                  elif field_info['field_type'] == 'boolean':
                     if key in self.window.AllKeysDict:
                       metadata = self.window[key].metadata
                       if 'values' in metadata:
