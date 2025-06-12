@@ -78,10 +78,16 @@ class JakTracker(object):
             metadata = {'values': element} # put list into metadata so we can hide/show siblings as needed
             key = element[0]
             field_info = self.fields[key]
-            # assume all field types are boolean here
-            # create icon for the first field in list for now
-            img = Image.open('icons/' + field_info['icons'][0]).convert('RGBA')
-            psg_row.append(PSG.Image(source=pil_to_bytes_with_alpha(img, self.prefs['uncollected_transparency']), background_color=self.prefs['bg_color'], subsample=self.prefs['icon_shrink_factor'], metadata=metadata, key=key, enable_events=(self.prefs['tracker_mode']=='manual')))
+
+            if len(element) == 2 and element[0].endswith("_num_scout_flies"):
+              # special scout fly case, start with 0th icon
+              img = Image.open('icons/' + field_info['icons'][0]).convert('RGBA')
+              psg_row.append(PSG.Image(source=pil_to_bytes_with_alpha(img, self.prefs['uncollected_transparency']), background_color=self.prefs['bg_color'], subsample=self.prefs['icon_shrink_factor'], metadata=metadata, key=key, enable_events=(self.prefs['tracker_mode']=='manual')))
+            else:
+              # normal multi-task list,assume all field types are boolean here
+              # create icon for the first field in list for now
+              img = Image.open('icons/' + field_info['icons'][0]).convert('RGBA')
+              psg_row.append(PSG.Image(source=pil_to_bytes_with_alpha(img, self.prefs['uncollected_transparency']), background_color=self.prefs['bg_color'], subsample=self.prefs['icon_shrink_factor'], metadata=metadata, key=key, enable_events=(self.prefs['tracker_mode']=='manual')))
           elif element in self.fields:
             field_info = self.fields[element]
             if field_info['field_type'] == 'boolean':
@@ -273,7 +279,6 @@ class JakTracker(object):
                       if 'values' in metadata:
                         # multi-field icon
                         siblings = metadata['values']
-                        found = False
                         for i, s in enumerate(siblings):
                           if values[s] == 0:
                             # first field not yet hit/collected, show the icon
@@ -298,8 +303,29 @@ class JakTracker(object):
                         else:
                           self.window[key].update(source=pil_to_bytes_with_alpha(img, self.prefs['collected_transparency']), subsample=self.prefs['icon_shrink_factor'])
                   elif field_info['field_type'] == 'counter':
-                    # update counter value
-                    self.window[key+'_counter'].update(values[key])
+                    if key in self.window.AllKeysDict:
+                      metadata = self.window[key].metadata
+                      if 'values' in metadata:
+                        # multi-field special case for flies
+                        siblings = metadata['values']
+                        if len(siblings) == 2 and siblings[0].endswith("_num_scout_flies"):
+                          # special case for fly counter
+                          # first entry is the counter, second entry is the task resolution (cell)
+                          # we assume its a button widget so we can do image+text
+                          if values[siblings[1]] == 1:
+                            # cell collected, so show that
+                            sf = self.fields_reduced[siblings[1]]
+                            img = Image.open('icons/' + sf['icons'][0]).convert('RGBA')
+                            self.window[key].update(source=pil_to_bytes_with_alpha(img, self.prefs['collected_transparency']), subsample=self.prefs['icon_shrink_factor'])
+                          else:
+                            # show fly count
+                            sf = self.fields_reduced[siblings[0]]
+                            fly_count = values[siblings[0]]
+                            img = Image.open('icons/' + sf['icons'][fly_count]).convert('RGBA')
+                            self.window[key].update(source=pil_to_bytes_with_alpha(img, self.prefs['uncollected_transparency']), subsample=self.prefs['icon_shrink_factor'])
+                      else:
+                        # update counter value
+                        self.window[key+'_counter'].update(values[key])
                   elif field_info['field_type'] == 'string' and key in self.window.key_dict.keys():
                     self.window[key].update(values[key])
                   else:

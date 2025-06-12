@@ -1,7 +1,6 @@
 # this file defines the UI layout
 #   - two hyphens starts a new row (except for HSeparator special case, it takes up an entire row)
 #   - text labels must start with a $
-#       - can add a | separator and then list level IDs (comma-separated) to get active level underlined
 #   - field names cannot be changed (many have comments to help clarify)
 #   - can use multiple fields in one spot with comma-separated []
 #       will show the icon for the first field in the list that hasn't split yet
@@ -10,29 +9,34 @@
 
 # totals row
 - - blank
-  - blank
   - num_power_cells
-  - hin_village2_levitator  # blue sage switch
-  - hin_village3_button  # red sage switch
-  - hin_village4_button  # yellow sage switch
+  - num_orbs
+  - num_scout_flies
+  - completion_percent
 # horizontal separator
 - HSeparator
 # Geyser Rock
-- - $Geyser|1
+- - $Geyser
+  - training_num_orbs
+  - training_num_scout_flies
   - res_training_gimmie
   - res_training_door
   - res_training_climb
-  - [training_num_scout_flies, res_training_buzzer] # special format for flies
+  - res_training_buzzer
 # Sandover Village
-- - $Sandover|2
+- - $Sandover
+  - village1_num_orbs
+  - village1_num_scout_flies
   - res_village1_mayor_money
   - res_village1_uncle_money
   - res_village1_yakow
   - res_village1_oracle_money1
   - res_village1_oracle_money2
-  - [village1_num_scout_flies, res_village1_buzzer] # special format for flies
+  - res_village1_buzzer
 # Sentinel Beach
-- - $Sentinel|3
+- - $Sentinel
+  - beach_num_orbs
+  - beach_num_scout_flies
   - res_beach_ecorocks
   - res_beach_flutflut
   - res_beach_pelican
@@ -40,9 +44,11 @@
   - res_beach_cannon
   - res_beach_gimmie
   - res_beach_sentinel
-  - [beach_num_scout_flies, res_beach_buzzer] # special format for flies
+  - res_beach_buzzer
 # Forbidden Jungle
-- - $FJ|4,5 # jungle and jungleb
+- - $FJ
+  - jungle_num_orbs
+  - jungle_num_scout_flies
   - [com_jungle_lurkerm, res_jungle_lurkerm, com_jungle_lurkerm]        # mirrors connected / cell collected
   - res_jungle_tower
   - res_jungle_eggtop         # blue eco switch
@@ -50,9 +56,11 @@
   - res_jungle_fishgame
   - res_jungle_canyon_end
   - res_jungle_temple_door
-  - [jungle_num_scout_flies, res_jungle_buzzer] # special format for flies
+  - res_jungle_buzzer
 # Misty Island
-- - $Misty|6
+- - $Misty
+  - misty_num_orbs
+  - misty_num_scout_flies
   - [com_misty_muse, res_misty_muse, com_misty_muse]  # catch muse / return muse
   - res_misty_boat            # top of lurker ship
   - res_misty_cannon
@@ -60,23 +68,29 @@
   - res_misty_bike            # flying lurkers
   - res_misty_bike_jump       # zoomer jump
   - res_misty_eco_challenge   # boosted
-  - [misty_num_scout_flies, res_misty_buzzer] # special format for flies
+  - res_misty_buzzer
 # Fire Canyon
-- - $Fire Canyon|7
+- - $Fire Canyon
+  - firecanyon_num_orbs
+  - firecanyon_num_scout_flies
   - res_firecanyon_end
-  - [firecanyon_num_scout_flies, res_firecanyon_buzzer] # special format for flies
+  - res_firecanyon_buzzer
 # horizontal separator
 - HSeparator
 # Rock Village
-- - $Rock Village|8
+- - $Rock Village
+  - village2_num_orbs
+  - village2_num_scout_flies
   - res_village2_gambler_money
   - res_village2_geologist_money
   - res_village2_warrior_money
   - res_village2_oracle_money1
   - res_village2_oracle_money2
-  - [village2_num_scout_flies, res_village2_buzzer] # special format for flies
+  - res_village2_buzzer
 # Lost Precusor City
-- - $LPC|9,10 # sunken and sunkenb
+- - $LPC
+  - sunken_num_orbs
+  - sunken_num_scout_flies   
   - res_sunken_room          # raise the chamber
   - res_sunken_pipe          # pipegame
   - res_sunken_slide         # bottom of LPC
@@ -84,9 +98,11 @@
   - res_sunken_platforms     # puzzle
   - res_sunken_top_of_helix  # climb from bottom (piggyback)
   - res_sunken_spinning_room # center of the complex (above dark eco)
-  - [sunken_num_scout_flies, res_sunken_buzzer] # special format for flies
+  - res_sunken_buzzer        
 # Boggy Swamp
-- - $Boggy|11
+- - $Boggy
+  - swamp_num_orbs
+  - swamp_num_scout_flies
   - res_swamp_flutflut
   - res_swamp_billy
   - res_swamp_battle
@@ -94,9 +110,11 @@
   - res_swamp_tether_1
   - res_swamp_tether_2
   - res_swamp_tether_3
-  - [swamp_num_scout_flies, res_swamp_buzzer] # special format for flies
+  - res_swamp_buzzer
 # Precursor Basin
-- - $Basin|12
+- - $Basin
+  - rolling_num_orbs
+  - rolling_num_scout_flies
   - [com_rolling_moles, res_rolling_moles, com_rolling_moles]  # herd moles / collect cell
   - res_rolling_robbers
   - [com_rolling_race, res_rolling_race, com_rolling_race]  # beat DMG / collect cell
@@ -104,17 +122,21 @@
   - res_rolling_plants
   - res_rolling_ring_chase_1
   - res_rolling_ring_chase_2
-  - [rolling_num_scout_flies, res_rolling_buzzer] # special format for flies
+  - res_rolling_buzzer
 # Mountain Pass
-- - $MP|13
+- - $MP
+  - ogre_num_orbs
+  - ogre_num_scout_flies
   - res_ogre_boss         # klaww
   - res_ogre_end
   - res_ogre_secret       # backwards cell / stalag hops / tree hops / boulder skip
-  - [ogre_num_scout_flies, res_ogre_buzzer] # special format for flies
+  - res_ogre_buzzer
 # horizontal separator
 - HSeparator
 # Volcanic Crater
-- - $VC|14
+- - $VC
+  - village3_num_orbs
+  - village3_num_scout_flies
   - res_village3_miner_money1
   - res_village3_miner_money2
   - res_village3_miner_money3
@@ -122,9 +144,11 @@
   - res_village3_oracle_money1
   - res_village3_oracle_money2
   - res_village3_extra1   # secret cell (from spider cave)
-  - [village3_num_scout_flies, res_village3_buzzer] # special format for flies
+  - res_village3_buzzer
 # Snowy Mountain
-- - $Snowy|15
+- - $Snowy
+  - snow_num_orbs
+  - snow_num_scout_flies
   - res_snow_eggtop       # yellow eco switch
   - res_snow_ram          # lurker troops
   - res_snow_bumpers      # blockers
@@ -132,9 +156,11 @@
   - res_snow_fort         # inside fortress
   - res_snow_ball         # open fortress gate
   - res_snow_bunnies
-  - [snow_num_scout_flies, res_snow_buzzer] # special format for flies
+  - res_snow_buzzer
 # Spider Cave
-- - $Spider Cave|16,17,18 # maincave, darkcave, robocave
+- - $Spider Cave
+  - cave_num_orbs
+  - cave_num_scout_flies
   - res_cave_gnawers
   - res_cave_dark_crystals
   - res_cave_dark_climb
@@ -142,20 +168,22 @@
   - res_cave_swing_poles
   - res_cave_spider_tunnel
   - res_cave_platforms    # quad jump
-  - [cave_num_scout_flies, res_cave_buzzer] # special format for flies
+  - res_cave_buzzer
 # Lava Tube
-- - $Lava Tube|19
+- - $Lava Tube
+  - lavatube_num_orbs
+  - lavatube_num_scout_flies
   - res_lavatube_end
-  - [lavatube_num_scout_flies, res_lavatube_buzzer] # special format for flies
+  - res_lavatube_buzzer
 # horizontal separator
 - HSeparator
 # Gol & Maia's Citadel
-- - $Citadel|20,21  # citadel, finalboss
+- - $Citadel
+  - citadel_num_orbs
+  - citadel_num_scout_flies
   - res_citadel_sage_blue
   - res_citadel_sage_red
   - res_citadel_sage_yellow
   - res_citadel_sage_green
-  - [citadel_num_scout_flies, res_citadel_buzzer] # special format for flies
-
-# Other splits you could use, you'll have to add your own icons for these though
-# - int_jungle_fishgame # talk to fisherma
+  - res_citadel_buzzer
+  
